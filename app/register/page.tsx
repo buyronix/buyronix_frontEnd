@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { RegisterPage } from "@/features/partner-landing";
+import { RegisterPage } from "@/features/registration";
 
 export const metadata: Metadata = {
   title: "Register Your Shop — Buyronix Partner",
@@ -10,4 +10,3 @@ export const metadata: Metadata = {
 export default function Register() {
   return <RegisterPage />;
 }
-

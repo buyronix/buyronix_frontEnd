@@ -1,20 +1,4 @@
-export interface SellerRegistrationForm {
-  shopName: string;
-  gstNumber: string;
-  mobNumber: string;
-  email: string;
-  address: string;
-  ownerName: string;
-  mobNo: string;
-  ownerAddress: string;
-  // Optional compatibility fields
-  phone?: string;
-  category?: string;
-  pincode?: string;
-  city?: string;
-  shopAddress?: string;
-  ownerMobile?: string;
-}
+export type { SellerRegistrationForm } from "@/features/registration";
 
 export interface FaqItem {
   id: string;
