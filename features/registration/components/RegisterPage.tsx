@@ -226,20 +226,20 @@ export function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fefbfc] text-neutral-900 flex flex-col selection:bg-[#623ac3]/15 selection:text-[#623ac3]">
+    <div className="min-h-screen bg-[#120e24] text-neutral-100 flex flex-col selection:bg-violet-500/20 selection:text-violet-300">
       {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-40 w-full border-b border-neutral-200/80 bg-[#fefbfc]/95 backdrop-blur-md">
+      <header className="sticky top-0 z-40 w-full border-b border-violet-950/60 bg-[#16112c]/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
           <Link
             href="/"
-            className="group flex items-center text-2xl sm:text-3xl font-extrabold italic tracking-tight text-neutral-900 transition-opacity hover:opacity-90"
+            className="group flex items-center text-2xl sm:text-3xl font-extrabold italic tracking-tight text-white transition-opacity hover:opacity-90"
           >
-            <span>buy</span><span className="text-[#623ac3]">ronix</span><span className="text-[#623ac3]">.</span>
+            <span>buy</span><span className="text-[#8c70d3]">ronix</span><span className="text-[#8c70d3]">.</span>
           </Link>
 
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors py-2 px-3 rounded-lg hover:bg-neutral-100"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-neutral-300 hover:text-white transition-colors py-2 px-3 rounded-lg hover:bg-neutral-900"
           >
             <ArrowLeft className="size-4" data-icon="inline-start" />
             <span>Back to Home</span>
@@ -257,18 +257,18 @@ export function RegisterPage() {
                 <div>
                   <Badge
                     variant="outline"
-                    className="border-[#623ac3]/30 bg-[#ede9fe] text-[#623ac3] font-semibold gap-1.5 py-1 px-3 mb-3.5 uppercase tracking-wider text-xs"
+                    className="border-violet-500/30 bg-violet-500/10 text-violet-300 font-semibold gap-1.5 py-1 px-3 mb-3.5 uppercase tracking-wider text-xs"
                   >
                     <Store className="size-3.5" data-icon="inline-start" />
                     <span>Partner with Buyronix</span>
                   </Badge>
 
-                  <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-neutral-900 leading-[1.12]">
+                  <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
                     Register Your <br className="hidden sm:inline" />
-                    <span className="text-[#623ac3]">Hardware Shop</span>
+                    <span className="text-[#8c70d3]">Hardware Shop</span>
                   </h1>
 
-                  <p className="mt-4 text-base sm:text-lg text-neutral-600 leading-relaxed">
+                  <p className="mt-4 text-base sm:text-lg text-neutral-300 leading-relaxed">
                     Join verified neighborhood hardware sellers and bring your inventory
                     closer to nearby buyers with instant local delivery.
                   </p>
@@ -276,44 +276,44 @@ export function RegisterPage() {
 
                 {/* Value Cards in High-Contrast Dark Theme */}
                 <div className="flex flex-col gap-3.5 pt-1">
-                  <div className="flex items-start gap-3.5 rounded-xl border border-neutral-200/90 bg-white p-4 shadow-sm shadow-black/5 hover:border-neutral-300 transition-colors">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#ede9fe] text-[#623ac3] border border-[#623ac3]/20">
+                  <div className="flex items-start gap-3.5 rounded-xl border border-neutral-800/90 bg-neutral-900/70 p-4 shadow-sm hover:border-neutral-700 transition-colors">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-violet-950/80 text-violet-300 border border-violet-500/20">
                       <Clock className="size-5" />
                     </span>
                     <div>
-                      <h2 className="text-sm font-bold text-neutral-900">Instant Local Delivery</h2>
-                      <p className="text-xs text-neutral-600 mt-0.5 leading-relaxed">
+                      <h2 className="text-sm font-bold text-white">Instant Local Delivery</h2>
+                      <p className="text-xs text-neutral-300 mt-0.5 leading-relaxed">
                         Nearby fleet riders pick up orders straight from your counter and deliver in 30–45 mins.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3.5 rounded-xl border border-neutral-200/90 bg-white p-4 shadow-sm shadow-black/5 hover:border-neutral-300 transition-colors">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#ede9fe] text-[#623ac3] border border-[#623ac3]/20">
+                  <div className="flex items-start gap-3.5 rounded-xl border border-neutral-800/90 bg-neutral-900/70 p-4 shadow-sm hover:border-neutral-700 transition-colors">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-violet-950/80 text-violet-300 border border-violet-500/20">
                       <ShieldCheck className="size-5" />
                     </span>
                     <div>
-                      <h2 className="text-sm font-bold text-neutral-900">GST Verified Network</h2>
-                      <p className="text-xs text-neutral-600 mt-0.5 leading-relaxed">
+                      <h2 className="text-sm font-bold text-white">GST Verified Network</h2>
+                      <p className="text-xs text-neutral-300 mt-0.5 leading-relaxed">
                         Build customer trust and enable seamless business tax invoice input credits (ITC).
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3.5 rounded-xl border border-neutral-200/90 bg-white p-4 shadow-sm shadow-black/5 hover:border-neutral-300 transition-colors">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#ede9fe] text-[#623ac3] border border-[#623ac3]/20">
+                  <div className="flex items-start gap-3.5 rounded-xl border border-neutral-800/90 bg-neutral-900/70 p-4 shadow-sm hover:border-neutral-700 transition-colors">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-violet-950/80 text-violet-300 border border-violet-500/20">
                       <CreditCard className="size-5" />
                     </span>
                     <div>
-                      <h2 className="text-sm font-bold text-neutral-900">Fast Merchant Settlements</h2>
-                      <p className="text-xs text-neutral-600 mt-0.5 leading-relaxed">
+                      <h2 className="text-sm font-bold text-white">Fast Merchant Settlements</h2>
+                      <p className="text-xs text-neutral-300 mt-0.5 leading-relaxed">
                         Direct bank account payouts settled seamlessly on each completed sale.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-dashed border-neutral-300 bg-neutral-100/60 p-4 text-xs text-neutral-600">
+                <div className="rounded-xl border border-dashed border-neutral-800 bg-neutral-900/40 p-4 text-xs text-neutral-400">
                   Need onboarding assistance? Our merchant team will guide you through verification and catalog setup within 24 hours.
                 </div>
               </div>
@@ -321,13 +321,13 @@ export function RegisterPage() {
               {/* Right Column: Two-Step Entry (Owner details first -> Business details next) */}
               <div className="w-full max-w-xl mx-auto lg:max-w-none lg:col-span-7 flex flex-col gap-6 order-2">
                 {/* Form Progress Bar at the Top */}
-                <div className="rounded-2xl border border-neutral-200/90 bg-white p-5 shadow-lg shadow-black/5">
+                <div className="rounded-2xl border border-violet-900/30 bg-[#16112c]/80 p-5 shadow-xl backdrop-blur-md">
                   <div className="flex items-center justify-between text-xs font-semibold mb-2.5">
                     <div className="flex items-center gap-2">
-                      <span className="flex size-6 items-center justify-center rounded-full bg-[#623ac3] text-[#ffffff] text-xs font-bold shadow-xs shadow-black/10">
+                      <span className="flex size-6 items-center justify-center rounded-full bg-[#623ac3] text-white text-xs font-bold shadow-xs">
                         {currentStep}
                       </span>
-                      <span className="text-neutral-900 text-sm font-semibold">
+                      <span className="text-white text-sm font-semibold">
                         {currentStep === 1
                           ? "Step 1 of 2: Owner Details"
                           : "Step 2 of 2: Business Details"}
@@ -335,22 +335,22 @@ export function RegisterPage() {
                     </div>
                     <Badge
                       variant="outline"
-                      className="border-neutral-200 bg-neutral-100 text-neutral-700 font-mono text-xs px-2.5 py-0.5"
+                      className="border-neutral-700 bg-neutral-950 text-neutral-300 font-mono text-xs px-2.5 py-0.5"
                     >
                       {currentStep === 1 ? "50% Complete" : "100% Complete"}
                     </Badge>
                   </div>
 
                   {/* Progress Bar Track */}
-                  <div className="h-2 w-full bg-neutral-100 rounded-full overflow-hidden border border-neutral-200">
+                  <div className="h-2 w-full bg-neutral-950 rounded-full overflow-hidden border border-neutral-800">
                     <div
-                      className="h-full bg-gradient-to-r #623ac3 rounded-full transition-all duration-300 ease-out"
+                      className="h-full bg-gradient-to-r from-violet-600 to-[#623ac3] rounded-full transition-all duration-300 ease-out"
                       style={{ width: currentStep === 1 ? "50%" : "100%" }}
                     />
                   </div>
 
                   {/* Step Buttons / Navigation Tabs */}
-                  <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-neutral-100 text-xs">
+                  <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-neutral-800/70 text-xs">
                     <button
                       type="button"
                       onClick={() => setCurrentStep(1)}
@@ -361,7 +361,7 @@ export function RegisterPage() {
                       ) : (
                         <span
                           className={`size-2 rounded-full shrink-0 ${
-                            currentStep === 1 ? "bg-[#623ac3]" : "bg-neutral-300"
+                            currentStep === 1 ? "bg-violet-500" : "bg-neutral-600"
                           }`}
                         />
                       )}
@@ -370,7 +370,7 @@ export function RegisterPage() {
                           isOwnerComplete
                             ? "text-emerald-400 font-medium truncate"
                             : currentStep === 1
-                            ? "text-[#623ac3] font-semibold truncate"
+                            ? "text-white font-medium truncate"
                             : "text-neutral-400 truncate"
                         }
                       >
@@ -392,7 +392,7 @@ export function RegisterPage() {
                       ) : (
                         <span
                           className={`size-2 rounded-full shrink-0 ${
-                            currentStep === 2 ? "bg-[#623ac3]" : "bg-neutral-300"
+                            currentStep === 2 ? "bg-violet-500" : "bg-neutral-600"
                           }`}
                         />
                       )}
@@ -401,7 +401,7 @@ export function RegisterPage() {
                           isBusinessComplete
                             ? "text-emerald-400 font-medium truncate"
                             : currentStep === 2
-                            ? "text-[#623ac3] font-semibold truncate"
+                            ? "text-white font-medium truncate"
                             : "text-neutral-400 truncate"
                         }
                       >
@@ -423,25 +423,25 @@ export function RegisterPage() {
                         transition={{ duration: 0.25 }}
                         className="flex flex-col gap-6"
                       >
-                        <Card className="rounded-2xl border border-neutral-200/90 bg-white p-0 shadow-xl shadow-black/5 ring-0 overflow-hidden">
-                          <CardHeader className="border-b border-neutral-100 p-5 sm:p-6 bg-neutral-50/50 flex flex-row items-center justify-between">
+                        <Card className="rounded-2xl border border-neutral-800 bg-neutral-900/80 p-0 shadow-2xl backdrop-blur-md ring-0 overflow-hidden">
+                          <CardHeader className="border-b border-neutral-800/90 p-5 sm:p-6 bg-neutral-900/95 flex flex-row items-center justify-between">
                             <div className="flex items-center gap-3">
-                              <span className="flex size-9 items-center justify-center rounded-xl bg-[#ede9fe] text-[#623ac3] border border-[#623ac3]/20">
+                              <span className="flex size-9 items-center justify-center rounded-xl bg-violet-950/80 text-violet-300 border border-violet-500/20">
                                 <User className="size-5" />
                               </span>
                               <div>
                                 <div className="flex items-center gap-2">
-                                  <CardTitle className="text-lg sm:text-xl font-bold text-neutral-900">
+                                  <CardTitle className="text-lg sm:text-xl font-bold text-white">
                                     Owner Details
                                   </CardTitle>
                                   <Badge
                                     variant="outline"
-                                    className="border-neutral-200 bg-neutral-100 text-neutral-700 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5"
+                                    className="border-neutral-700 bg-neutral-950/70 text-neutral-300 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5"
                                   >
                                     Step 1 of 2
                                   </Badge>
                                 </div>
-                                <CardDescription className="text-xs text-neutral-500 mt-0.5">
+                                <CardDescription className="text-xs text-neutral-400 mt-0.5">
                                   Personal contact information & residential address of the proprietor
                                 </CardDescription>
                               </div>
@@ -476,10 +476,10 @@ export function RegisterPage() {
                                         handleFieldChange("ownerName", e.target.value)
                                       }
                                       aria-invalid={!!errors.ownerName}
-                                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
                                     />
                                     {errors.ownerName && (
-                                      <FieldError className="text-xs text-red-400">
+                                      <FieldError className="text-xs text-rose-400">
                                         {errors.ownerName}
                                       </FieldError>
                                     )}
@@ -503,10 +503,10 @@ export function RegisterPage() {
                                         handleFieldChange("mobNo", e.target.value)
                                       }
                                       aria-invalid={!!errors.mobNo}
-                                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
                                     />
                                     {errors.mobNo && (
-                                      <FieldError className="text-xs text-red-400">
+                                      <FieldError className="text-xs text-rose-400">
                                         {errors.mobNo}
                                       </FieldError>
                                     )}
@@ -531,7 +531,7 @@ export function RegisterPage() {
                                         handleFieldChange("ownerState", e.target.value)
                                       }
                                       aria-invalid={!!errors.ownerState}
-                                      className="h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-xs shadow-black/5 focus-visible:outline-none focus-visible:border-[#623ac3] focus-visible:ring-2 focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-white focus-visible:outline-none focus-visible:border-[#623ac3] focus-visible:ring-2 focus-visible:ring-[#623ac3]/25"
                                     >
                                       <option
                                         value=""
@@ -544,14 +544,14 @@ export function RegisterPage() {
                                         <option
                                           key={st}
                                           value={st}
-                                          className="bg-white text-neutral-900"
+                                          className="bg-neutral-950 text-white"
                                         >
                                           {st}
                                         </option>
                                       ))}
                                     </select>
                                     {errors.ownerState && (
-                                      <FieldError className="text-xs text-red-400">
+                                      <FieldError className="text-xs text-rose-400">
                                         {errors.ownerState}
                                       </FieldError>
                                     )}
@@ -572,7 +572,7 @@ export function RegisterPage() {
                                       onChange={(e) =>
                                         handleFieldChange("ownerCity", e.target.value)
                                       }
-                                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
                                     />
                                   </Field>
                                 </div>
@@ -594,10 +594,10 @@ export function RegisterPage() {
                                       handleFieldChange("ownerAddress", e.target.value)
                                     }
                                     aria-invalid={!!errors.ownerAddress}
-                                    className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                    className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
                                   />
                                   {errors.ownerAddress && (
-                                    <FieldError className="text-xs text-red-400">
+                                    <FieldError className="text-xs text-rose-400">
                                       {errors.ownerAddress}
                                     </FieldError>
                                   )}
@@ -619,7 +619,7 @@ export function RegisterPage() {
                           <Button
                             type="button"
                             onClick={handleNextStep}
-                            className="w-full sm:w-auto min-w-[200px] rounded-xl bg-[#623ac3] py-3.5 px-6 text-sm font-semibold text-[#ffffff] shadow-lg shadow-black/15 transition-all hover:bg-[#522ea8] hover:shadow-xl hover:shadow-black/20 active:scale-[0.99] cursor-pointer inline-flex items-center justify-center gap-2"
+                            className="w-full sm:w-auto min-w-[200px] rounded-xl bg-[#623ac3] py-3.5 px-6 text-sm font-semibold text-white shadow-lg shadow-purple-900/40 transition-all hover:bg-[#522ea8] hover:shadow-purple-900/50 active:scale-[0.99] cursor-pointer inline-flex items-center justify-center gap-2"
                           >
                             <span>Next: Business Details</span>
                             <ArrowRight className="size-4" data-icon="inline-end" />
@@ -636,25 +636,25 @@ export function RegisterPage() {
                         transition={{ duration: 0.25 }}
                         className="flex flex-col gap-6"
                       >
-                        <Card className="rounded-2xl border border-neutral-200/90 bg-white p-0 shadow-xl shadow-black/5 ring-0 overflow-hidden">
-                          <CardHeader className="border-b border-neutral-100 p-5 sm:p-6 bg-neutral-50/50 flex flex-row items-center justify-between">
+                        <Card className="rounded-2xl border border-neutral-800 bg-neutral-900/80 p-0 shadow-2xl backdrop-blur-md ring-0 overflow-hidden">
+                          <CardHeader className="border-b border-neutral-800/90 p-5 sm:p-6 bg-neutral-900/95 flex flex-row items-center justify-between">
                             <div className="flex items-center gap-3">
-                              <span className="flex size-9 items-center justify-center rounded-xl bg-[#ede9fe] text-[#623ac3] border border-[#623ac3]/20">
+                              <span className="flex size-9 items-center justify-center rounded-xl bg-violet-950/80 text-violet-300 border border-violet-500/20">
                                 <Building2 className="size-5" />
                               </span>
                               <div>
                                 <div className="flex items-center gap-2">
-                                  <CardTitle className="text-lg sm:text-xl font-bold text-neutral-900">
+                                  <CardTitle className="text-lg sm:text-xl font-bold text-white">
                                     Business Details
                                   </CardTitle>
                                   <Badge
                                     variant="outline"
-                                    className="border-neutral-200 bg-neutral-100 text-neutral-700 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5"
+                                    className="border-neutral-700 bg-neutral-950/70 text-neutral-300 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5"
                                   >
                                     Step 2 of 2
                                   </Badge>
                                 </div>
-                                <CardDescription className="text-xs text-neutral-500 mt-0.5">
+                                <CardDescription className="text-xs text-neutral-400 mt-0.5">
                                   Hardware shop name, GSTIN, and local delivery fulfillment address
                                 </CardDescription>
                               </div>
@@ -689,10 +689,10 @@ export function RegisterPage() {
                                         handleFieldChange("shopName", e.target.value)
                                       }
                                       aria-invalid={!!errors.shopName}
-                                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
                                     />
                                     {errors.shopName && (
-                                      <FieldError className="text-xs text-red-400">
+                                      <FieldError className="text-xs text-rose-400">
                                         {errors.shopName}
                                       </FieldError>
                                     )}
@@ -718,10 +718,10 @@ export function RegisterPage() {
                                         )
                                       }
                                       aria-invalid={!!errors.gstNumber}
-                                      className="h-10 text-sm font-mono uppercase bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm font-mono uppercase bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
                                     />
                                     {errors.gstNumber && (
-                                      <FieldError className="text-xs text-red-400">
+                                      <FieldError className="text-xs text-rose-400">
                                         {errors.gstNumber}
                                       </FieldError>
                                     )}
@@ -747,10 +747,10 @@ export function RegisterPage() {
                                         handleFieldChange("mobNumber", e.target.value)
                                       }
                                       aria-invalid={!!errors.mobNumber}
-                                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
                                     />
                                     {errors.mobNumber && (
-                                      <FieldError className="text-xs text-red-400">
+                                      <FieldError className="text-xs text-rose-400">
                                         {errors.mobNumber}
                                       </FieldError>
                                     )}
@@ -774,10 +774,10 @@ export function RegisterPage() {
                                         handleFieldChange("email", e.target.value)
                                       }
                                       aria-invalid={!!errors.email}
-                                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
                                     />
                                     {errors.email && (
-                                      <FieldError className="text-xs text-red-400">
+                                      <FieldError className="text-xs text-rose-400">
                                         {errors.email}
                                       </FieldError>
                                     )}
@@ -812,10 +812,10 @@ export function RegisterPage() {
                                       handleFieldChange("address", e.target.value)
                                     }
                                     aria-invalid={!!errors.address}
-                                    className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                    className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
                                   />
                                   {errors.address && (
-                                    <FieldError className="text-xs text-red-400">
+                                    <FieldError className="text-xs text-rose-400">
                                       {errors.address}
                                     </FieldError>
                                   )}
@@ -845,10 +845,10 @@ export function RegisterPage() {
                                         )
                                       }
                                       aria-invalid={!!errors.pincode}
-                                      className="h-10 text-sm font-mono tracking-wider bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm font-mono tracking-wider bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
                                     />
                                     {errors.pincode && (
-                                      <FieldError className="text-xs text-red-400">
+                                      <FieldError className="text-xs text-rose-400">
                                         {errors.pincode}
                                       </FieldError>
                                     )}
@@ -870,7 +870,7 @@ export function RegisterPage() {
                                         handleFieldChange("state", e.target.value)
                                       }
                                       aria-invalid={!!errors.state}
-                                      className="h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-xs shadow-black/5 focus-visible:outline-none focus-visible:border-[#623ac3] focus-visible:ring-2 focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-white focus-visible:outline-none focus-visible:border-[#623ac3] focus-visible:ring-2 focus-visible:ring-[#623ac3]/25"
                                     >
                                       <option
                                         value=""
@@ -883,14 +883,14 @@ export function RegisterPage() {
                                         <option
                                           key={st}
                                           value={st}
-                                          className="bg-white text-neutral-900"
+                                          className="bg-neutral-950 text-white"
                                         >
                                           {st}
                                         </option>
                                       ))}
                                     </select>
                                     {errors.state && (
-                                      <FieldError className="text-xs text-red-400">
+                                      <FieldError className="text-xs text-rose-400">
                                         {errors.state}
                                       </FieldError>
                                     )}
@@ -911,7 +911,7 @@ export function RegisterPage() {
                                       onChange={(e) =>
                                         handleFieldChange("city", e.target.value)
                                       }
-                                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
                                     />
                                   </Field>
                                 </div>
@@ -930,7 +930,7 @@ export function RegisterPage() {
                             type="button"
                             variant="outline"
                             onClick={handlePrevStep}
-                            className="w-full sm:w-auto border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 shadow-xs shadow-black/5 inline-flex items-center gap-1.5"
+                            className="w-full sm:w-auto border-neutral-700 bg-neutral-950 text-neutral-300 hover:bg-neutral-900 hover:text-white inline-flex items-center gap-1.5"
                           >
                             <ChevronLeft className="size-4" data-icon="inline-start" />
                             <span>Back: Owner Details</span>
@@ -943,7 +943,7 @@ export function RegisterPage() {
                             <Button
                               type="submit"
                               disabled={isSubmitting}
-                              className="w-full sm:w-auto min-w-[200px] rounded-xl bg-[#623ac3] py-3.5 px-6 text-sm font-semibold text-[#ffffff] shadow-lg shadow-black/15 transition-all hover:bg-[#522ea8] hover:shadow-xl hover:shadow-black/20 active:scale-[0.99] cursor-pointer inline-flex items-center justify-center gap-2"
+                              className="w-full sm:w-auto min-w-[200px] rounded-xl bg-[#623ac3] py-3.5 px-6 text-sm font-semibold text-white shadow-lg shadow-purple-900/40 transition-all hover:bg-[#522ea8] hover:shadow-purple-900/50 active:scale-[0.99] cursor-pointer inline-flex items-center justify-center gap-2"
                             >
                               {isSubmitting ? (
                                 <span>Submitting Details...</span>
@@ -970,21 +970,21 @@ export function RegisterPage() {
               transition={{ duration: 0.4 }}
               className="mx-auto max-w-xl rounded-2xl border border-neutral-800 bg-neutral-900/90 p-8 sm:p-12 text-center shadow-2xl backdrop-blur-md"
             >
-              <div className="mx-auto mb-5 flex size-16 items-center justify-center rounded-full bg-[#ede9fe] text-[#623ac3] border border-[#623ac3]/20">
+              <div className="mx-auto mb-5 flex size-16 items-center justify-center rounded-full bg-violet-950/70 text-violet-300 border border-violet-500/30">
                 <CheckCircle2 className="size-9" />
               </div>
 
-              <span className="text-xs font-bold tracking-wider text-[#623ac3] uppercase">
+              <span className="text-xs font-bold tracking-wider text-[#8c70d3] uppercase">
                 Application Received
               </span>
 
-              <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900">
+              <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                 Welcome to Buyronix
               </h1>
 
               <p className="mt-3 text-sm text-neutral-300 leading-relaxed max-w-md mx-auto">
                 Thank you for registering{" "}
-                <strong className="text-neutral-900 font-semibold">
+                <strong className="text-white font-semibold">
                   {form.shopName || "your shop"}
                 </strong>
                 . Our local merchant onboarding team will contact you within 24 hours to finalize verification and connect your counter to nearby buyers.
@@ -992,7 +992,7 @@ export function RegisterPage() {
 
               <div className="mt-6 rounded-xl border border-neutral-800 bg-neutral-950 p-4 text-xs text-neutral-400 max-w-xs mx-auto">
                 Reference Token:{" "}
-                <span className="font-mono font-bold text-neutral-900 text-sm ml-1">
+                <span className="font-mono font-bold text-white text-sm ml-1">
                   {referenceToken}
                 </span>
               </div>
@@ -1001,12 +1001,12 @@ export function RegisterPage() {
                 <Button
                   onClick={handleReset}
                   variant="outline"
-                  className="border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 shadow-xs shadow-black/5"
+                  className="border-neutral-800 bg-neutral-900 text-neutral-200 hover:bg-neutral-800 hover:text-white"
                 >
                   Register Another Shop
                 </Button>
                 <Link href="/">
-                  <Button className="w-full sm:w-auto bg-[#623ac3] text-[#ffffff] hover:bg-[#522ea8] shadow-md shadow-black/15">
+                  <Button className="w-full sm:w-auto bg-[#623ac3] text-white hover:bg-[#522ea8]">
                     Return to Home
                   </Button>
                 </Link>
