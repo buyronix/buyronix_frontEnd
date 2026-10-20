@@ -21,39 +21,39 @@ export function PartnerLandingPage() {
   return (
     <div
       id="top"
-      className="min-h-screen bg-neutral-950 text-neutral-900 dark:text-neutral-50 flex flex-col selection:bg-rose-100 selection:text-rose-900"
+      className="min-h-screen bg-[#fefbfc] text-neutral-900 flex flex-col selection:bg-[#623ac3]/15 selection:text-[#623ac3]"
     >
       {/* Top Floating Glassmorphism Navbar */}
       <Navbar onOpenRegister={handleOpenRegister} />
 
       <main className="w-full flex-1">
-        {/* Section 0: Cinematic Dark Hero */}
+        {/* Section 0: Hero Section */}
         <section id="hero" className="w-full bg-neutral-950 scroll-mt-16">
           <HeroSection onOpenRegister={handleOpenRegister} />
         </section>
 
         {/* Section 1: Benefits & 3 Core Pillar Cards */}
-        <section id="benefits" className="w-full bg-white dark:bg-black scroll-mt-16">
+        <section id="benefits" className="w-full bg-[#fefbfc] scroll-mt-16">
           <BenefitsSection />
         </section>
 
         {/* Section 2: Built Around Your Business (Value Props) */}
-        <section id="features" className="w-full bg-neutral-50 dark:bg-neutral-900 scroll-mt-16">
+        <section id="features" className="w-full bg-[#fefbfc] scroll-mt-16">
           <ValuePropsSection onOpenRegister={handleOpenRegister} />
         </section>
 
         {/* Section 3: Onboarding Steps */}
-        <section id="how-it-works" className="w-full bg-white dark:bg-black scroll-mt-16">
+        <section id="how-it-works" className="w-full bg-[#fefbfc] scroll-mt-16">
           <StepsSection />
         </section>
 
         {/* Section 4: FAQ Accordion */}
-        <section id="faq" className="w-full bg-neutral-50 dark:bg-neutral-900 scroll-mt-16">
+        <section id="faq" className="w-full bg-[#fefbfc] scroll-mt-16">
           <FaqSection />
         </section>
 
         {/* Section 5: Closing CTA & Footer */}
-        <section id="register" className="w-full bg-neutral-950 text-white scroll-mt-16">
+        <section id="register" className="w-full bg-[#fefbfc] text-neutral-900 scroll-mt-16">
           <CtaSection onOpenRegister={handleOpenRegister} />
           <Footer onOpenRegister={handleOpenRegister} />
         </section>

@@ -31,7 +31,7 @@ export function BenefitsSection() {
   ];
 
   return (
-    <div className="w-full bg-white dark:bg-black py-12 sm:py-20 md:py-28 flex flex-col justify-center">
+    <div className="w-full bg-[#fefbfc] py-12 sm:py-20 md:py-28 flex flex-col justify-center">
       {/* Main Benefits Content */}
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
@@ -43,8 +43,8 @@ export function BenefitsSection() {
             transition={{ duration: 0.6 }}
             className="text-center mb-3 sm:mb-4"
           >
-            <span className="text-xs sm:text-sm font-bold tracking-[0.22em] text-[#e11d48] uppercase">
-              A LOCAL SHOP. A BIGGER OPPORTUNITY.
+            <span className="text-xs sm:text-sm font-bold tracking-[0.22em] text-[#623ac3] uppercase">
+               Find near , Find best.
             </span>
           </motion.div>
 
@@ -56,14 +56,12 @@ export function BenefitsSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white leading-[1.18]">
-              Better business for <br className="hidden sm:inline" />
-              <span className="text-[#e11d48]">neighborhood sellers.</span>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.18]">
+              connecting buyers <br className="hidden sm:inline" />
+              <span className="text-[#623ac3]"> empowering sellers.</span>
             </h2>
-            <p className="mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base text-neutral-500 leading-relaxed dark:text-neutral-400">
-              Your next customer could be just around the corner. Buyronix connects
-              local hardware shops with people looking for the right tech, right
-              now.
+            <p className="mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base text-neutral-600 leading-relaxed">
+             experience the smooth ordering and fast delivery
             </p>
           </motion.div>
 
@@ -81,27 +79,27 @@ export function BenefitsSection() {
                   whileHover={{ y: -6, transition: { duration: 0.25 } }}
                   className="w-full h-full"
                 >
-                  <Card className="group relative h-full w-full rounded-2xl border border-neutral-200/90 bg-white p-6 sm:p-7 md:p-9 flex flex-col justify-between shadow-xs transition-all duration-200 hover:border-neutral-300 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-900/60 dark:hover:border-neutral-700 min-h-0 md:min-h-[360px]">
+                  <Card className="group relative h-full w-full rounded-2xl border border-neutral-200/90 bg-white p-6 sm:p-7 md:p-9 flex flex-col justify-between shadow-sm shadow-black/5 transition-all duration-200 hover:border-neutral-300 hover:shadow-lg hover:shadow-black/10 min-h-0 md:min-h-[360px]">
                     <div>
                       {/* Icon Container */}
-                      <div className="mb-4 sm:mb-6 md:mb-8 flex size-12 shrink-0 items-center justify-center rounded-xl bg-rose-50 text-[#e11d48] transition-colors group-hover:bg-[#e11d48] group-hover:text-white dark:bg-rose-950/60 dark:text-rose-400">
+                      <div className="mb-4 sm:mb-6 md:mb-8 flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#ede9fe] text-[#623ac3] transition-colors group-hover:bg-[#623ac3] group-hover:text-[#ffffff] shadow-xs shadow-black/5">
                         <Icon className="size-6 stroke-[2]" />
                       </div>
 
                       {/* Content */}
                       <div className="flex flex-col gap-2 sm:gap-3">
-                        <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                        <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900">
                           {benefit.title}
                         </h3>
-                        <p className="text-sm sm:text-base text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
                           {benefit.description}
                         </p>
                       </div>
                     </div>
 
                     {/* Footer Tagline */}
-                    <div className="pt-6 sm:pt-7 md:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 mt-6 sm:mt-8">
-                      <span className="text-xs font-bold tracking-[0.18em] text-[#e11d48] uppercase">
+                    <div className="pt-6 sm:pt-7 md:pt-8 border-t border-neutral-100 mt-6 sm:mt-8">
+                      <span className="text-xs font-bold tracking-[0.18em] text-[#623ac3] uppercase">
                         {benefit.tag}
                       </span>
                     </div>

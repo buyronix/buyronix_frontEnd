@@ -10,7 +10,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { Menu, ArrowRight, ArrowUpRight } from "lucide-react";
+import { Menu, ArrowRight, ArrowUpRight, Zap } from "lucide-react";
 
 interface NavbarProps {
   onOpenRegister: () => void;
@@ -32,45 +32,59 @@ export function Navbar({ onOpenRegister }: NavbarProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-black/85 backdrop-blur-md border-b border-white/10 py-3 shadow-md"
-          : "bg-transparent py-4 sm:py-5"
+          ? "bg-[#fefbfc]/95 backdrop-blur-md border-b border-neutral-200/80 py-3 shadow-md shadow-black/5"
+          : "bg-[#fefbfc] py-4 sm:py-5"
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Brand Logo - Italic as shown in reference */}
+        {/* Brand Logo - Styled with icon & #623ac3 ronix accent */}
         <Link
           href="/"
-          className="group flex items-center text-2xl sm:text-3xl font-extrabold italic tracking-tight text-white transition-opacity hover:opacity-90"
+          className="group flex items-center gap-2.5 text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 transition-opacity hover:opacity-95"
         >
-          <span>buyronix</span>
-          <span className="not-italic text-[#e11d48] transition-transform group-hover:scale-125 ml-0.5">
-            .
+          <div className="flex size-8 sm:size-9 items-center justify-center rounded-full bg-[#623ac3] text-white shadow-xs shadow-black/10">
+            <Zap className="size-4 sm:size-4.5 fill-white text-white" />
+          </div>
+          <span className="font-semibold text-neutral-900">
+            Buy <span className="text-[#623ac3] font-bold transition-colors">ronix</span>
           </span>
         </Link>
 
         {/* Desktop Navigation Links & Register Button */}
-        <div className="hidden items-center gap-8 md:flex">
-          <nav className="flex items-center gap-6 text-sm font-medium text-white/90">
+        <div className="hidden items-center gap-6 md:flex">
+          <nav className="flex items-center gap-2 text-sm font-medium">
             <a
               href="#top"
-              className="transition-colors hover:text-white"
+              className="rounded-full bg-[#ede9fe] text-[#623ac3] font-semibold px-4 py-1.5 shadow-xs shadow-black/5 transition-colors hover:bg-[#e4ddfc]"
             >
               Home
             </a>
             <a
+              href="#benefits"
+              className="px-3 py-1.5 text-neutral-600 transition-colors hover:text-neutral-950"
+            >
+              Benefits
+            </a>
+            <a
               href="#features"
-              className="transition-colors hover:text-white"
+              className="px-3 py-1.5 text-neutral-600 transition-colors hover:text-neutral-950"
             >
               About us
+            </a>
+            <a
+              href="#how-it-works"
+              className="px-3 py-1.5 text-neutral-600 transition-colors hover:text-neutral-950"
+            >
+              How it works
             </a>
           </nav>
 
           <Button
             onClick={onOpenRegister}
-            className="rounded-lg bg-[#e11d48] px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#c9183d] active:scale-95 inline-flex items-center gap-1.5"
+            className="rounded-full bg-[#623ac3] px-5 py-2.5 text-sm font-semibold text-[#ffffff] shadow-md shadow-black/15 transition-all hover:bg-[#522ea8] hover:shadow-lg hover:shadow-black/20 active:scale-95 inline-flex items-center gap-1.5 cursor-pointer"
           >
             <span>Register your shop</span>
-            <ArrowUpRight className="size-4" />
+            <ArrowUpRight className="size-4 text-[#ffffff]" />
           </Button>
         </div>
 
@@ -79,10 +93,10 @@ export function Navbar({ onOpenRegister }: NavbarProps) {
           <Button
             onClick={onOpenRegister}
             size="sm"
-            className="rounded-lg bg-[#e11d48] px-3 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-[#c9183d] inline-flex items-center gap-1"
+            className="rounded-full bg-[#623ac3] px-3.5 py-1.5 text-xs font-semibold text-[#ffffff] shadow-xs shadow-black/10 hover:bg-[#522ea8] inline-flex items-center gap-1"
           >
             <span>Register</span>
-            <ArrowUpRight className="size-3" />
+            <ArrowUpRight className="size-3 text-[#ffffff]" />
           </Button>
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -92,72 +106,75 @@ export function Navbar({ onOpenRegister }: NavbarProps) {
                   variant="ghost"
                   size="icon-sm"
                   aria-label="Open navigation menu"
-                  className="size-9 rounded-lg text-white hover:bg-white/10"
+                  className="size-9 rounded-lg text-neutral-900 hover:bg-neutral-100"
                 />
               }
             >
-              <Menu className="size-5 text-white" />
+              <Menu className="size-5 text-neutral-900" />
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] sm:w-[320px] p-6 bg-neutral-950 text-white border-neutral-800">
-              <SheetHeader className="text-left pb-4 border-b border-neutral-800">
-                <SheetTitle className="text-xl font-extrabold italic tracking-tight text-white">
-                  buyronix<span className="not-italic text-[#e11d48]">.</span>
+            <SheetContent side="right" className="w-[280px] sm:w-[320px] p-6 bg-[#fefbfc] text-neutral-900 border-neutral-200 shadow-2xl shadow-black/20">
+              <SheetHeader className="text-left pb-4 border-b border-neutral-200">
+                <SheetTitle className="text-xl font-bold tracking-tight text-neutral-900 flex items-center gap-2">
+                  <div className="flex size-7 items-center justify-center rounded-full bg-[#623ac3] text-white shadow-xs shadow-black/10">
+                    <Zap className="size-3.5 fill-white text-white" />
+                  </div>
+                  <span>Buy <span className="text-[#623ac3]">ronix</span></span>
                 </SheetTitle>
               </SheetHeader>
 
-              <div className="flex flex-col gap-4 py-6">
+              <div className="flex flex-col gap-3 py-6">
                 <a
                   href="#top"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-neutral-200 transition-colors hover:bg-neutral-900"
+                  className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-950"
                 >
                   <span>Home</span>
-                  <ArrowRight className="size-4 text-neutral-500" />
-                </a>
-                <a
-                  href="#features"
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-neutral-200 transition-colors hover:bg-neutral-900"
-                >
-                  <span>About us</span>
-                  <ArrowRight className="size-4 text-neutral-500" />
+                  <ArrowRight className="size-4 text-[#623ac3]" />
                 </a>
                 <a
                   href="#benefits"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-neutral-200 transition-colors hover:bg-neutral-900"
+                  className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-950"
                 >
                   <span>Benefits</span>
-                  <ArrowRight className="size-4 text-neutral-500" />
+                  <ArrowRight className="size-4 text-[#623ac3]" />
+                </a>
+                <a
+                  href="#features"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-950"
+                >
+                  <span>About us</span>
+                  <ArrowRight className="size-4 text-[#623ac3]" />
                 </a>
                 <a
                   href="#how-it-works"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-neutral-200 transition-colors hover:bg-neutral-900"
+                  className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-950"
                 >
                   <span>How It Works</span>
-                  <ArrowRight className="size-4 text-neutral-500" />
+                  <ArrowRight className="size-4 text-[#623ac3]" />
                 </a>
                 <a
                   href="#faq"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-neutral-200 transition-colors hover:bg-neutral-900"
+                  className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-950"
                 >
                   <span>FAQ</span>
-                  <ArrowRight className="size-4 text-neutral-500" />
+                  <ArrowRight className="size-4 text-[#623ac3]" />
                 </a>
               </div>
 
-              <div className="mt-auto pt-6 border-t border-neutral-800">
+              <div className="mt-auto pt-6 border-t border-neutral-200">
                 <Button
                   onClick={() => {
                     setIsOpen(false);
                     onOpenRegister();
                   }}
-                  className="w-full rounded-lg bg-[#e11d48] py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#c9183d] inline-flex items-center justify-center gap-2"
+                  className="w-full rounded-full bg-[#623ac3] py-3 text-sm font-semibold text-[#ffffff] shadow-md shadow-black/15 hover:bg-[#522ea8] inline-flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>Register your shop</span>
-                  <ArrowUpRight className="size-4" />
+                  <ArrowUpRight className="size-4 text-[#ffffff]" />
                 </Button>
               </div>
             </SheetContent>
