@@ -1,12 +1,19 @@
 export interface SellerRegistrationForm {
   shopName: string;
-  ownerName: string;
-  phone: string;
-  email: string;
-  category: string;
   gstNumber: string;
-  pincode: string;
-  city: string;
+  mobNumber: string;
+  email: string;
+  address: string;
+  ownerName: string;
+  mobNo: string;
+  ownerAddress: string;
+  // Optional compatibility fields
+  phone?: string;
+  category?: string;
+  pincode?: string;
+  city?: string;
+  shopAddress?: string;
+  ownerMobile?: string;
 }
 
 export interface FaqItem {
@@ -21,4 +28,3 @@ export interface BenefitCard {
   tagline: string;
   iconName: "clock" | "shield-check" | "credit-card";
 }
-

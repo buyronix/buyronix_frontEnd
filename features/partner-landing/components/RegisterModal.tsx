@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { CheckCircle2, Store, ArrowRight } from "lucide-react";
+import { CheckCircle2, Store, ArrowRight, User } from "lucide-react";
 import type { SellerRegistrationForm } from "../types";
 
 interface RegisterModalProps {
@@ -22,30 +22,40 @@ interface RegisterModalProps {
 
 const initialForm: SellerRegistrationForm = {
   shopName: "",
-  ownerName: "",
-  phone: "",
-  email: "",
-  category: "PC Components & Peripherals",
   gstNumber: "",
-  pincode: "",
-  city: "",
+  mobNumber: "",
+  email: "",
+  address: "",
+  ownerName: "",
+  mobNo: "",
+  ownerAddress: "",
 };
 
 export function RegisterModal({
   open,
   onOpenChange,
-  defaultCategory,
 }: RegisterModalProps) {
-  const [form, setForm] = React.useState<SellerRegistrationForm>({
-    ...initialForm,
-    category: defaultCategory || initialForm.category,
-  });
+  const [form, setForm] = React.useState<SellerRegistrationForm>(initialForm);
   const [submitted, setSubmitted] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [referenceToken, setReferenceToken] = React.useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Console log the submitted details
+    console.log("Seller registration form submitted:", form);
+    console.log({
+      "Shop name": form.shopName,
+      "Gst number": form.gstNumber,
+      "Mob number": form.mobNumber,
+      "Email": form.email,
+      "Address": form.address,
+      "Owner name": form.ownerName,
+      "Mob no": form.mobNo,
+      "Address (Owner)": form.ownerAddress,
+    });
+
     setIsSubmitting(true);
     const token = `BYX-${Math.floor(100000 + Math.random() * 900000)}`;
     setReferenceToken(token);
@@ -65,7 +75,7 @@ export function RegisterModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-lg max-h-[90vh] overflow-y-auto">
         {!submitted ? (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <DialogHeader className="text-left">
@@ -87,23 +97,145 @@ export function RegisterModal({
             </DialogHeader>
 
             <div className="flex flex-col gap-3 py-1">
+              {/* Shop Details Section */}
+              <div className="flex items-center gap-2 pb-1 border-b border-neutral-100 dark:border-neutral-800">
+                <Store className="size-4 text-rose-600 dark:text-rose-400" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300">
+                  Shop Details
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="flex flex-col gap-1.5">
+                  <label
+                    htmlFor="shopName"
+                    className="text-xs font-medium text-neutral-700 dark:text-neutral-300"
+                  >
+                    Shop name *
+                  </label>
+                  <Input
+                    id="shopName"
+                    name="shopName"
+                    required
+                    placeholder="e.g. Apex Hardware & Tech Hub"
+                    value={form.shopName}
+                    onChange={(e) =>
+                      setForm((prev) => ({ ...prev, shopName: e.target.value }))
+                    }
+                    className="h-10 text-sm"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label
+                    htmlFor="gstNumber"
+                    className="text-xs font-medium text-neutral-700 dark:text-neutral-300"
+                  >
+                    Gst number *
+                  </label>
+                  <Input
+                    id="gstNumber"
+                    name="gstNumber"
+                    required
+                    placeholder="e.g. 29AAAAA0000A1Z5"
+                    value={form.gstNumber}
+                    onChange={(e) =>
+                      setForm((prev) => ({
+                        ...prev,
+                        gstNumber: e.target.value.toUpperCase(),
+                      }))
+                    }
+                    className="h-10 text-sm font-mono uppercase"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="flex flex-col gap-1.5">
+                  <label
+                    htmlFor="mobNumber"
+                    className="text-xs font-medium text-neutral-700 dark:text-neutral-300"
+                  >
+                    Mob number *
+                  </label>
+                  <Input
+                    id="mobNumber"
+                    name="mobNumber"
+                    required
+                    type="tel"
+                    placeholder="e.g. +91 98765 43210"
+                    value={form.mobNumber}
+                    onChange={(e) =>
+                      setForm((prev) => ({
+                        ...prev,
+                        mobNumber: e.target.value,
+                      }))
+                    }
+                    className="h-10 text-sm"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label
+                    htmlFor="email"
+                    className="text-xs font-medium text-neutral-700 dark:text-neutral-300"
+                  >
+                    Email *
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    required
+                    type="email"
+                    placeholder="e.g. shop@example.com"
+                    value={form.email}
+                    onChange={(e) =>
+                      setForm((prev) => ({ ...prev, email: e.target.value }))
+                    }
+                    className="h-10 text-sm"
+                  />
+                </div>
+              </div>
+
               <div className="flex flex-col gap-1.5">
                 <label
-                  htmlFor="shopName"
+                  htmlFor="address"
                   className="text-xs font-medium text-neutral-700 dark:text-neutral-300"
                 >
-                  Shop Name *
+                  Address *
                 </label>
                 <Input
-                  id="shopName"
+                  id="address"
+                  name="address"
                   required
-                  placeholder="e.g. Apex Hardware & Tech Hub"
-                  value={form.shopName}
+                  placeholder="e.g. Shop #12, Commercial Complex, MG Road, Bengaluru"
+                  value={form.address}
                   onChange={(e) =>
-                    setForm({ ...form, shopName: e.target.value })
+                    setForm((prev) => ({ ...prev, address: e.target.value }))
                   }
                   className="h-10 text-sm"
                 />
+              </div>
+
+              {/* Owner Details Section */}
+              <div className="flex items-center justify-between pt-2 pb-1 border-b border-neutral-100 dark:border-neutral-800">
+                <div className="flex items-center gap-2">
+                  <User className="size-4 text-rose-600 dark:text-rose-400" />
+                  <span className="text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300">
+                    Owner Details
+                  </span>
+                </div>
+                {form.address && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setForm((prev) => ({ ...prev, ownerAddress: prev.address }))
+                    }
+                    className="text-[11px] font-medium text-rose-600 hover:text-rose-700 dark:text-rose-400 hover:underline cursor-pointer"
+                  >
+                    Same as shop address
+                  </button>
+                )}
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -112,15 +244,16 @@ export function RegisterModal({
                     htmlFor="ownerName"
                     className="text-xs font-medium text-neutral-700 dark:text-neutral-300"
                   >
-                    Owner / Contact Name *
+                    Owner name *
                   </label>
                   <Input
                     id="ownerName"
+                    name="ownerName"
                     required
                     placeholder="e.g. Ramesh Patel"
                     value={form.ownerName}
                     onChange={(e) =>
-                      setForm({ ...form, ownerName: e.target.value })
+                      setForm((prev) => ({ ...prev, ownerName: e.target.value }))
                     }
                     className="h-10 text-sm"
                   />
@@ -128,19 +261,20 @@ export function RegisterModal({
 
                 <div className="flex flex-col gap-1.5">
                   <label
-                    htmlFor="phone"
+                    htmlFor="mobNo"
                     className="text-xs font-medium text-neutral-700 dark:text-neutral-300"
                   >
-                    Phone / WhatsApp *
+                    Mob no *
                   </label>
                   <Input
-                    id="phone"
+                    id="mobNo"
+                    name="mobNo"
                     required
                     type="tel"
-                    placeholder="+91 98765 43210"
-                    value={form.phone}
+                    placeholder="e.g. +91 98765 43210"
+                    value={form.mobNo}
                     onChange={(e) =>
-                      setForm({ ...form, phone: e.target.value })
+                      setForm((prev) => ({ ...prev, mobNo: e.target.value }))
                     }
                     className="h-10 text-sm"
                   />
@@ -149,74 +283,22 @@ export function RegisterModal({
 
               <div className="flex flex-col gap-1.5">
                 <label
-                  htmlFor="category"
+                  htmlFor="ownerAddress"
                   className="text-xs font-medium text-neutral-700 dark:text-neutral-300"
                 >
-                  Primary Hardware Category
+                  Address *
                 </label>
-                <select
-                  id="category"
-                  value={form.category}
+                <Input
+                  id="ownerAddress"
+                  name="ownerAddress"
+                  required
+                  placeholder="e.g. Flat 302, Green Valley Apartments, Bengaluru"
+                  value={form.ownerAddress}
                   onChange={(e) =>
-                    setForm({ ...form, category: e.target.value })
+                    setForm((prev) => ({ ...prev, ownerAddress: e.target.value }))
                   }
-                  className="h-10 w-full rounded-lg border border-neutral-200 bg-background px-3 py-2 text-sm text-neutral-900 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/30 dark:border-neutral-800 dark:text-neutral-100"
-                >
-                  <option value="PC Components & Peripherals">
-                    PC Components & Peripherals
-                  </option>
-                  <option value="Everyday Electronics & Cables">
-                    Everyday Electronics & Cables
-                  </option>
-                  <option value="Power Tools & Industrial Hardware">
-                    Power Tools & Industrial Hardware
-                  </option>
-                  <option value="Networking & Smart Home Gear">
-                    Networking & Smart Home Gear
-                  </option>
-                  <option value="Electrical Supplies & Fixtures">
-                    Electrical Supplies & Fixtures
-                  </option>
-                </select>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="flex flex-col gap-1.5">
-                  <label
-                    htmlFor="gstNumber"
-                    className="text-xs font-medium text-neutral-700 dark:text-neutral-300"
-                  >
-                    GSTIN Number (Optional)
-                  </label>
-                  <Input
-                    id="gstNumber"
-                    placeholder="22AAAAA0000A1Z5"
-                    value={form.gstNumber}
-                    onChange={(e) =>
-                      setForm({ ...form, gstNumber: e.target.value.toUpperCase() })
-                    }
-                    className="h-10 text-sm font-mono uppercase"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label
-                    htmlFor="city"
-                    className="text-xs font-medium text-neutral-700 dark:text-neutral-300"
-                  >
-                    City / Neighborhood *
-                  </label>
-                  <Input
-                    id="city"
-                    required
-                    placeholder="e.g. Indiranagar, Bengaluru"
-                    value={form.city}
-                    onChange={(e) =>
-                      setForm({ ...form, city: e.target.value })
-                    }
-                    className="h-10 text-sm"
-                  />
-                </div>
+                  className="h-10 text-sm"
+                />
               </div>
             </div>
 

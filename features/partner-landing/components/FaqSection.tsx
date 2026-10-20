@@ -60,7 +60,10 @@ export function FaqSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
         >
-          <Accordion className="w-full divide-y divide-neutral-100 dark:divide-neutral-800 border-y border-neutral-100 dark:border-neutral-800">
+          <Accordion
+            defaultValue={["item-1"]}
+            className="w-full divide-y divide-neutral-100 dark:divide-neutral-800 border-y border-neutral-100 dark:border-neutral-800"
+          >
             {faqs.map((faq) => (
               <AccordionItem key={faq.value} value={faq.value} className="py-2">
                 <AccordionTrigger className="text-base sm:text-lg font-medium text-neutral-900 dark:text-white hover:text-[#e11d48] dark:hover:text-rose-400 py-4 transition-colors">

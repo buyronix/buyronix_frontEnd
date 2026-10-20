@@ -12,7 +12,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ onOpenRegister }: HeroSectionProps) {
   return (
-    <div className="relative min-h-[92vh] sm:min-h-screen w-full flex flex-col justify-between items-center text-center px-4 pt-28 pb-10 sm:pt-36 sm:pb-12 overflow-hidden bg-neutral-950 bg-cover bg-center select-none"
+    <div className="relative min-h-[100dvh] w-full flex flex-col justify-between items-center text-center px-4 pt-20 pb-6 sm:pt-36 sm:pb-12 overflow-hidden bg-neutral-950 bg-cover bg-center select-none"
       style={{ backgroundImage: "url('/hero-bg.png')" }}
     >
       {/* Background Image & Gradient Scrim Overlays */}

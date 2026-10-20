@@ -31,7 +31,7 @@ export function BenefitsSection() {
   ];
 
   return (
-    <div className="w-full bg-white dark:bg-black py-10 sm:py-16 md:py-24 flex flex-col justify-center">
+    <div className="w-full bg-white dark:bg-black py-12 sm:py-20 md:py-28 flex flex-col justify-center">
       {/* Main Benefits Content */}
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
@@ -57,7 +57,7 @@ export function BenefitsSection() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white leading-[1.18]">
-              Better business for <br />
+              Better business for <br className="hidden sm:inline" />
               <span className="text-[#e11d48]">neighborhood sellers.</span>
             </h2>
             <p className="mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base text-neutral-500 leading-relaxed dark:text-neutral-400">
@@ -68,7 +68,7 @@ export function BenefitsSection() {
           </motion.div>
 
           {/* 3 Cards: 1-column on mobile, 3-column grid on desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 items-stretch w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-6 lg:gap-8 items-stretch w-full">
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
@@ -84,7 +84,7 @@ export function BenefitsSection() {
                   <Card className="group relative h-full w-full rounded-2xl border border-neutral-200/90 bg-white p-6 sm:p-7 md:p-9 flex flex-col justify-between shadow-xs transition-all duration-200 hover:border-neutral-300 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-900/60 dark:hover:border-neutral-700 min-h-0 md:min-h-[360px]">
                     <div>
                       {/* Icon Container */}
-                      <div className="mb-4 sm:mb-6 md:mb-8 flex size-12 items-center justify-center rounded-xl bg-rose-50 text-[#e11d48] transition-colors group-hover:bg-[#e11d48] group-hover:text-white dark:bg-rose-950/60 dark:text-rose-400">
+                      <div className="mb-4 sm:mb-6 md:mb-8 flex size-12 shrink-0 items-center justify-center rounded-xl bg-rose-50 text-[#e11d48] transition-colors group-hover:bg-[#e11d48] group-hover:text-white dark:bg-rose-950/60 dark:text-rose-400">
                         <Icon className="size-6 stroke-[2]" />
                       </div>
 

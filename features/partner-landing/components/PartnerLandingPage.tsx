@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import { Navbar } from "./Navbar";
 import { HeroSection } from "./HeroSection";
 import { BenefitsSection } from "./BenefitsSection";
@@ -9,14 +10,12 @@ import { StepsSection } from "./StepsSection";
 import { FaqSection } from "./FaqSection";
 import { CtaSection } from "./CtaSection";
 import { Footer } from "./Footer";
-import { RegisterModal } from "./RegisterModal";
-import { StackingSection } from "./StackingSection";
 
 export function PartnerLandingPage() {
-  const [registerOpen, setRegisterOpen] = React.useState(false);
+  const router = useRouter();
 
   const handleOpenRegister = () => {
-    setRegisterOpen(true);
+    router.push("/register");
   };
 
   return (
@@ -27,71 +26,38 @@ export function PartnerLandingPage() {
       {/* Top Floating Glassmorphism Navbar */}
       <Navbar onOpenRegister={handleOpenRegister} />
 
-      <main className="relative w-full flex-1">
-        {/* Slide 0: Cinematic Dark Hero */}
-        <StackingSection
-          index={0}
-          total={6}
-          id="hero"
-          bgColor="bg-neutral-950"
-        >
+      <main className="w-full flex-1">
+        {/* Section 0: Cinematic Dark Hero */}
+        <section id="hero" className="w-full bg-neutral-950 scroll-mt-16">
           <HeroSection onOpenRegister={handleOpenRegister} />
-        </StackingSection>
+        </section>
 
-        {/* Slide 1: Benefits & 3 Core Pillar Cards */}
-        <StackingSection
-          index={1}
-          total={6}
-          id="benefits"
-          bgColor="bg-white dark:bg-black"
-        >
+        {/* Section 1: Benefits & 3 Core Pillar Cards */}
+        <section id="benefits" className="w-full bg-white dark:bg-black scroll-mt-16">
           <BenefitsSection />
-        </StackingSection>
+        </section>
 
-        {/* Slide 2: Built Around Your Business (Value Props) */}
-        <StackingSection
-          index={2}
-          total={6}
-          id="features"
-          bgColor="bg-neutral-50 dark:bg-neutral-900"
-        >
+        {/* Section 2: Built Around Your Business (Value Props) */}
+        <section id="features" className="w-full bg-neutral-50 dark:bg-neutral-900 scroll-mt-16">
           <ValuePropsSection onOpenRegister={handleOpenRegister} />
-        </StackingSection>
+        </section>
 
-        {/* Slide 3: Onboarding Steps */}
-        <StackingSection
-          index={3}
-          total={6}
-          id="how-it-works"
-          bgColor="bg-white dark:bg-black"
-        >
+        {/* Section 3: Onboarding Steps */}
+        <section id="how-it-works" className="w-full bg-white dark:bg-black scroll-mt-16">
           <StepsSection />
-        </StackingSection>
+        </section>
 
-        {/* Slide 4: FAQ Accordion */}
-        <StackingSection
-          index={4}
-          total={6}
-          id="faq"
-          bgColor="bg-neutral-50 dark:bg-neutral-900"
-        >
+        {/* Section 4: FAQ Accordion */}
+        <section id="faq" className="w-full bg-neutral-50 dark:bg-neutral-900 scroll-mt-16">
           <FaqSection />
-        </StackingSection>
+        </section>
 
-        {/* Slide 5: Closing CTA & Footer */}
-        <StackingSection
-          index={5}
-          total={6}
-          id="register"
-          bgColor="bg-neutral-950 text-white"
-        >
+        {/* Section 5: Closing CTA & Footer */}
+        <section id="register" className="w-full bg-neutral-950 text-white scroll-mt-16">
           <CtaSection onOpenRegister={handleOpenRegister} />
           <Footer onOpenRegister={handleOpenRegister} />
-        </StackingSection>
+        </section>
       </main>
-
-      {/* Interactive Shop Registration Modal */}
-      <RegisterModal open={registerOpen} onOpenChange={setRegisterOpen} />
     </div>
   );
 }
