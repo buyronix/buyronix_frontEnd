@@ -27,12 +27,11 @@ import {
   ArrowLeft,
   ArrowRight,
   CheckCircle2,
-  Clock,
-  ShieldCheck,
-  CreditCard,
   Building2,
   ChevronLeft,
   Lock,
+  MapPin,
+  TrendingUp,
 } from "lucide-react";
 import { SOUTH_INDIAN_STATES, type SellerRegistrationForm } from "../types";
 
@@ -75,15 +74,7 @@ export function RegisterPage() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [referenceToken, setReferenceToken] = React.useState("");
 
-  // Check completion of Step 1 (Owner Details)
-  const isOwnerComplete = Boolean(
-    form.ownerName.trim() &&
-      form.mobNo.trim() &&
-      form.ownerAddress.trim() &&
-      form.ownerState.trim()
-  );
-
-  // Check completion of Step 2 (Business Details)
+  // Check completion of Step 1 (Business Details)
   const isBusinessComplete = Boolean(
     form.shopName.trim() &&
       form.gstNumber.trim() &&
@@ -95,27 +86,15 @@ export function RegisterPage() {
       form.state.trim()
   );
 
-  const validateStep1 = (): boolean => {
-    const newErrors: FormErrors = {};
+  // Check completion of Step 2 (Owner Details)
+  const isOwnerComplete = Boolean(
+    form.ownerName.trim() &&
+      form.mobNo.trim() &&
+      form.ownerAddress.trim() &&
+      form.ownerState.trim()
+  );
 
-    if (!form.ownerName.trim()) {
-      newErrors.ownerName = "Owner name is required";
-    }
-    if (!form.mobNo.trim()) {
-      newErrors.mobNo = "Owner mobile number is required";
-    }
-    if (!form.ownerState.trim()) {
-      newErrors.ownerState = "Please select a state";
-    }
-    if (!form.ownerAddress.trim()) {
-      newErrors.ownerAddress = "Owner address is required";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const validateStep2 = (): boolean => {
+  const validateBusinessDetails = (): boolean => {
     const newErrors: FormErrors = {};
 
     if (!form.shopName.trim()) {
@@ -144,8 +123,28 @@ export function RegisterPage() {
     return Object.keys(newErrors).length === 0;
   };
 
+  const validateOwnerDetails = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!form.ownerName.trim()) {
+      newErrors.ownerName = "Owner name is required";
+    }
+    if (!form.mobNo.trim()) {
+      newErrors.mobNo = "Owner mobile number is required";
+    }
+    if (!form.ownerState.trim()) {
+      newErrors.ownerState = "Please select a state";
+    }
+    if (!form.ownerAddress.trim()) {
+      newErrors.ownerAddress = "Owner address is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleNextStep = () => {
-    if (!validateStep1()) {
+    if (!validateBusinessDetails()) {
       return;
     }
     setErrors({});
@@ -162,18 +161,13 @@ export function RegisterPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateStep2()) {
+    if (!validateOwnerDetails()) {
       return;
     }
 
     // Console log the submitted details
     console.log("Seller registration form submitted:", form);
     console.log({
-      "Owner name": form.ownerName,
-      "Mob no": form.mobNo,
-      "State (Owner)": form.ownerState,
-      "City (Owner)": form.ownerCity,
-      "Address (Owner)": form.ownerAddress,
       "Shop name": form.shopName,
       "Gst number": form.gstNumber,
       "Mob number": form.mobNumber,
@@ -182,6 +176,11 @@ export function RegisterPage() {
       "Pincode": form.pincode,
       "State": form.state,
       "City": form.city,
+      "Owner name": form.ownerName,
+      "Mob no": form.mobNo,
+      "State (Owner)": form.ownerState,
+      "City (Owner)": form.ownerCity,
+      "Address (Owner)": form.ownerAddress,
     });
 
     setIsSubmitting(true);
@@ -211,17 +210,17 @@ export function RegisterPage() {
     }
   };
 
-  const handleCopyOwnerAddressToShop = () => {
+  const handleCopyShopAddressToOwner = () => {
     setForm((prev) => ({
       ...prev,
-      address: prev.ownerAddress || prev.address,
-      state: prev.ownerState || prev.state,
-      city: prev.ownerCity || prev.city,
+      ownerAddress: prev.address || prev.ownerAddress,
+      ownerState: prev.state || prev.ownerState,
+      ownerCity: prev.city || prev.ownerCity,
     }));
     setErrors((prev) => ({
       ...prev,
-      address: undefined,
-      state: undefined,
+      ownerAddress: undefined,
+      ownerState: undefined,
     }));
   };
 
@@ -255,73 +254,78 @@ export function RegisterPage() {
         <div className="mx-auto max-w-7xl">
           {!submitted ? (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              {/* Left Column: Register Your Hardware Shop - Vertically centered / Sticky at Left Side */}
-              <div className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col justify-center gap-6 order-1">
+              {/* Left Column: Stay local. Reach further. - Vertically centered / Sticky at Left Side */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col justify-center gap-8 order-1"
+              >
                 <div>
-                  <Badge
-                    variant="outline"
-                    className="border-rose-500/30 bg-rose-500/10 text-rose-400 font-semibold gap-1.5 py-1 px-3 mb-3.5 uppercase tracking-wider text-xs"
-                  >
-                    <Store className="size-3.5" data-icon="inline-start" />
-                    <span>Partner with Buyronix</span>
-                  </Badge>
+                  <p className="text-xs sm:text-sm font-bold tracking-[0.2em] text-[#e11d48] uppercase mb-3">
+                    BUILT AROUND YOUR BUSINESS
+                  </p>
 
                   <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
-                    Register Your <br className="hidden sm:inline" />
-                    <span className="text-[#e11d48]">Hardware Shop</span>
+                    Stay local. <br className="hidden sm:inline" />
+                    <span className="text-[#e11d48]">Reach further.</span>
                   </h1>
 
                   <p className="mt-4 text-base sm:text-lg text-neutral-300 leading-relaxed">
-                    Join verified neighborhood hardware sellers and bring your inventory
-                    closer to nearby buyers with instant local delivery.
+                    From PC components to everyday electronics, your inventory deserves
+                    more than passing footfall.
                   </p>
                 </div>
 
-                {/* Value Cards in High-Contrast Dark Theme */}
-                <div className="flex flex-col gap-3.5 pt-1">
-                  <div className="flex items-start gap-3.5 rounded-xl border border-neutral-800/90 bg-neutral-900/70 p-4 shadow-sm hover:border-neutral-700 transition-colors">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
-                      <Clock className="size-5" />
-                    </span>
-                    <div>
-                      <h2 className="text-sm font-bold text-white">Instant Local Delivery</h2>
-                      <p className="text-xs text-neutral-300 mt-0.5 leading-relaxed">
-                        Nearby fleet riders pick up orders straight from your counter and deliver in 30–45 mins.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3.5 rounded-xl border border-neutral-800/90 bg-neutral-900/70 p-4 shadow-sm hover:border-neutral-700 transition-colors">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
-                      <ShieldCheck className="size-5" />
-                    </span>
-                    <div>
-                      <h2 className="text-sm font-bold text-white">GST Verified Network</h2>
-                      <p className="text-xs text-neutral-300 mt-0.5 leading-relaxed">
-                        Build customer trust and enable seamless business tax invoice input credits (ITC).
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3.5 rounded-xl border border-neutral-800/90 bg-neutral-900/70 p-4 shadow-sm hover:border-neutral-700 transition-colors">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
-                      <CreditCard className="size-5" />
-                    </span>
-                    <div>
-                      <h2 className="text-sm font-bold text-white">Fast Merchant Settlements</h2>
-                      <p className="text-xs text-neutral-300 mt-0.5 leading-relaxed">
-                        Direct bank account payouts settled seamlessly on each completed sale.
-                      </p>
-                    </div>
-                  </div>
+                {/* 3 Value Points matching Image 1: Clean minimal rows with Framer Motion entry */}
+                <div className="flex flex-col gap-6 pt-1">
+                  {[
+                    {
+                      icon: MapPin,
+                      title: "Get discovered nearby",
+                      description:
+                        "Connect with customers in your neighborhood who are looking for what you sell.",
+                    },
+                    {
+                      icon: Store,
+                      title: "Your shop, online",
+                      description:
+                        "Bring your local reputation and hardware expertise to a digital storefront.",
+                    },
+                    {
+                      icon: TrendingUp,
+                      title: "More ways to grow",
+                      description:
+                        "Turn local demand into new opportunities beyond your shop door.",
+                    },
+                  ].map((point, index) => {
+                    const Icon = point.icon;
+                    return (
+                      <motion.div
+                        key={point.title}
+                        initial={{ opacity: 0, x: -15 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: 0.1 + index * 0.1 }}
+                        className="flex items-start gap-4 group"
+                      >
+                        <div className="flex size-11 sm:size-12 shrink-0 items-center justify-center rounded-xl bg-rose-950/80 text-[#e11d48] border border-rose-500/20 transition-colors group-hover:border-rose-500/50 group-hover:bg-[#e11d48] group-hover:text-white">
+                          <Icon className="size-5 sm:size-6 stroke-[2]" />
+                        </div>
+                        <div className="flex flex-col gap-1 pt-0.5">
+                          <h2 className="text-base sm:text-lg font-bold text-white tracking-tight">
+                            {point.title}
+                          </h2>
+                          <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                            {point.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
                 </div>
+              </motion.div>
 
-                <div className="rounded-xl border border-dashed border-neutral-800 bg-neutral-900/40 p-4 text-xs text-neutral-400">
-                  Need onboarding assistance? Our merchant team will guide you through verification and catalog setup within 24 hours.
-                </div>
-              </div>
-
-              {/* Right Column: Two-Step Entry (Owner details first -> Business details next) */}
+              {/* Right Column: Two-Step Entry (Business details first -> Owner details next) */}
               <div className="lg:col-span-7 flex flex-col gap-6 order-2">
                 {/* Form Progress Bar at the Top */}
                 <div className="rounded-2xl border border-neutral-800 bg-neutral-900/80 p-5 shadow-xl backdrop-blur-md">
@@ -332,8 +336,8 @@ export function RegisterPage() {
                       </span>
                       <span className="text-white text-sm font-semibold">
                         {currentStep === 1
-                          ? "Step 1 of 2: Owner Details"
-                          : "Step 2 of 2: Business Details"}
+                          ? "Step 1 of 2: Business Details"
+                          : "Step 2 of 2: Owner Details"}
                       </span>
                     </div>
                     <Badge
@@ -359,7 +363,7 @@ export function RegisterPage() {
                       onClick={() => setCurrentStep(1)}
                       className="flex items-center gap-2 text-left cursor-pointer hover:opacity-90 transition-opacity"
                     >
-                      {isOwnerComplete ? (
+                      {isBusinessComplete ? (
                         <CheckCircle2 className="size-4 text-emerald-400 shrink-0" />
                       ) : (
                         <span
@@ -370,27 +374,27 @@ export function RegisterPage() {
                       )}
                       <span
                         className={
-                          isOwnerComplete
+                          isBusinessComplete
                             ? "text-emerald-400 font-medium truncate"
                             : currentStep === 1
                             ? "text-white font-medium truncate"
                             : "text-neutral-400 truncate"
                         }
                       >
-                        1. Owner Details
+                        1. Business Details
                       </span>
                     </button>
 
                     <button
                       type="button"
                       onClick={() => {
-                        if (validateStep1()) {
+                        if (validateBusinessDetails()) {
                           setCurrentStep(2);
                         }
                       }}
                       className="flex items-center gap-2 text-left cursor-pointer hover:opacity-90 transition-opacity"
                     >
-                      {isBusinessComplete ? (
+                      {isOwnerComplete ? (
                         <CheckCircle2 className="size-4 text-emerald-400 shrink-0" />
                       ) : (
                         <span
@@ -401,14 +405,14 @@ export function RegisterPage() {
                       )}
                       <span
                         className={
-                          isBusinessComplete
+                          isOwnerComplete
                             ? "text-emerald-400 font-medium truncate"
                             : currentStep === 2
                             ? "text-white font-medium truncate"
                             : "text-neutral-400 truncate"
                         }
                       >
-                        2. Business Details
+                        2. Owner Details
                       </span>
                     </button>
                   </div>
@@ -417,12 +421,318 @@ export function RegisterPage() {
                 <form onSubmit={handleSubmit} noValidate>
                   <AnimatePresence mode="wait">
                     {currentStep === 1 ? (
-                      /* STEP 1: OWNER DETAILS ENTRY */
+                      /* STEP 1: BUSINESS DETAILS ENTRY */
                       <motion.div
-                        key="step1-owner"
+                        key="step1-business"
                         initial={{ opacity: 0, x: -15 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 15 }}
+                        transition={{ duration: 0.25 }}
+                        className="flex flex-col gap-6"
+                      >
+                        <Card className="rounded-2xl border border-neutral-800 bg-neutral-900/80 p-0 shadow-2xl backdrop-blur-md ring-0 overflow-hidden">
+                          <CardHeader className="border-b border-neutral-800/90 p-5 sm:p-6 bg-neutral-900/95 flex flex-row items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <span className="flex size-9 items-center justify-center rounded-xl bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
+                                <Building2 className="size-5" />
+                              </span>
+                              <div>
+                                <div className="flex items-center gap-2">
+                                  <CardTitle className="text-lg sm:text-xl font-bold text-white">
+                                    Business Details
+                                  </CardTitle>
+                                  <Badge
+                                    variant="outline"
+                                    className="border-neutral-700 bg-neutral-950/70 text-neutral-300 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5"
+                                  >
+                                    Step 1 of 2
+                                  </Badge>
+                                </div>
+                                <CardDescription className="text-xs text-neutral-400 mt-0.5">
+                                  Hardware shop name, GSTIN, and local delivery fulfillment address
+                                </CardDescription>
+                              </div>
+                            </div>
+
+                            {isBusinessComplete && (
+                              <Badge className="bg-emerald-950/80 text-emerald-400 border border-emerald-500/30 text-xs hidden sm:inline-flex items-center gap-1">
+                                <CheckCircle2 className="size-3" />
+                                <span>Complete</span>
+                              </Badge>
+                            )}
+                          </CardHeader>
+
+                          <CardContent className="p-5 sm:p-7">
+                            <FieldGroup className="gap-5">
+                              <FieldSet className="gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                  <Field data-invalid={!!errors.shopName}>
+                                    <FieldLabel
+                                      htmlFor="shopName"
+                                      className="text-xs font-semibold text-neutral-200"
+                                    >
+                                      Shop name *
+                                    </FieldLabel>
+                                    <Input
+                                      id="shopName"
+                                      name="shopName"
+                                      required
+                                      placeholder="e.g. Apex Hardware & Tech Hub"
+                                      value={form.shopName}
+                                      onChange={(e) =>
+                                        handleFieldChange("shopName", e.target.value)
+                                      }
+                                      aria-invalid={!!errors.shopName}
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
+                                    />
+                                    {errors.shopName && (
+                                      <FieldError className="text-xs text-rose-400">
+                                        {errors.shopName}
+                                      </FieldError>
+                                    )}
+                                  </Field>
+
+                                  <Field data-invalid={!!errors.gstNumber}>
+                                    <FieldLabel
+                                      htmlFor="gstNumber"
+                                      className="text-xs font-semibold text-neutral-200"
+                                    >
+                                      Gst number *
+                                    </FieldLabel>
+                                    <Input
+                                      id="gstNumber"
+                                      name="gstNumber"
+                                      required
+                                      placeholder="e.g. 29AAAAA0000A1Z5"
+                                      value={form.gstNumber}
+                                      onChange={(e) =>
+                                        handleFieldChange(
+                                          "gstNumber",
+                                          e.target.value.toUpperCase()
+                                        )
+                                      }
+                                      aria-invalid={!!errors.gstNumber}
+                                      className="h-10 text-sm font-mono uppercase bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
+                                    />
+                                    {errors.gstNumber && (
+                                      <FieldError className="text-xs text-rose-400">
+                                        {errors.gstNumber}
+                                      </FieldError>
+                                    )}
+                                  </Field>
+                                </div>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                  <Field data-invalid={!!errors.mobNumber}>
+                                    <FieldLabel
+                                      htmlFor="mobNumber"
+                                      className="text-xs font-semibold text-neutral-200"
+                                    >
+                                      Mob number *
+                                    </FieldLabel>
+                                    <Input
+                                      id="mobNumber"
+                                      name="mobNumber"
+                                      required
+                                      type="tel"
+                                      placeholder="e.g. +91 98765 43210"
+                                      value={form.mobNumber}
+                                      onChange={(e) =>
+                                        handleFieldChange("mobNumber", e.target.value)
+                                      }
+                                      aria-invalid={!!errors.mobNumber}
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
+                                    />
+                                    {errors.mobNumber && (
+                                      <FieldError className="text-xs text-rose-400">
+                                        {errors.mobNumber}
+                                      </FieldError>
+                                    )}
+                                  </Field>
+
+                                  <Field data-invalid={!!errors.email}>
+                                    <FieldLabel
+                                      htmlFor="email"
+                                      className="text-xs font-semibold text-neutral-200"
+                                    >
+                                      Email *
+                                    </FieldLabel>
+                                    <Input
+                                      id="email"
+                                      name="email"
+                                      required
+                                      type="email"
+                                      placeholder="e.g. shop@example.com"
+                                      value={form.email}
+                                      onChange={(e) =>
+                                        handleFieldChange("email", e.target.value)
+                                      }
+                                      aria-invalid={!!errors.email}
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
+                                    />
+                                    {errors.email && (
+                                      <FieldError className="text-xs text-rose-400">
+                                        {errors.email}
+                                      </FieldError>
+                                    )}
+                                  </Field>
+                                </div>
+
+                                <Field data-invalid={!!errors.address}>
+                                  <FieldLabel
+                                    htmlFor="address"
+                                    className="text-xs font-semibold text-neutral-200"
+                                  >
+                                    Address *
+                                  </FieldLabel>
+                                  <Input
+                                    id="address"
+                                    name="address"
+                                    required
+                                    placeholder="e.g. Shop #12, Commercial Complex, MG Road, Bengaluru"
+                                    value={form.address}
+                                    onChange={(e) =>
+                                      handleFieldChange("address", e.target.value)
+                                    }
+                                    aria-invalid={!!errors.address}
+                                    className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
+                                  />
+                                  {errors.address && (
+                                    <FieldError className="text-xs text-rose-400">
+                                      {errors.address}
+                                    </FieldError>
+                                  )}
+                                </Field>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                  <Field data-invalid={!!errors.pincode}>
+                                    <FieldLabel
+                                      htmlFor="pincode"
+                                      className="text-xs font-semibold text-neutral-200"
+                                    >
+                                      Pincode *
+                                    </FieldLabel>
+                                    <Input
+                                      id="pincode"
+                                      name="pincode"
+                                      required
+                                      type="text"
+                                      inputMode="numeric"
+                                      maxLength={6}
+                                      placeholder="e.g. 560038"
+                                      value={form.pincode}
+                                      onChange={(e) =>
+                                        handleFieldChange(
+                                          "pincode",
+                                          e.target.value.replace(/\D/g, "").slice(0, 6)
+                                        )
+                                      }
+                                      aria-invalid={!!errors.pincode}
+                                      className="h-10 text-sm font-mono tracking-wider bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
+                                    />
+                                    {errors.pincode && (
+                                      <FieldError className="text-xs text-rose-400">
+                                        {errors.pincode}
+                                      </FieldError>
+                                    )}
+                                  </Field>
+
+                                  <Field data-invalid={!!errors.state}>
+                                    <FieldLabel
+                                      htmlFor="state"
+                                      className="text-xs font-semibold text-neutral-200"
+                                    >
+                                      State *
+                                    </FieldLabel>
+                                    <select
+                                      id="state"
+                                      name="state"
+                                      required
+                                      value={form.state}
+                                      onChange={(e) =>
+                                        handleFieldChange("state", e.target.value)
+                                      }
+                                      aria-invalid={!!errors.state}
+                                      className="h-10 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-white focus-visible:outline-none focus-visible:border-[#e11d48] focus-visible:ring-2 focus-visible:ring-[#e11d48]/25"
+                                    >
+                                      <option
+                                        value=""
+                                        disabled
+                                        className="bg-neutral-950 text-neutral-500"
+                                      >
+                                        Select State *
+                                      </option>
+                                      {SOUTH_INDIAN_STATES.map((st) => (
+                                        <option
+                                          key={st}
+                                          value={st}
+                                          className="bg-neutral-950 text-white"
+                                        >
+                                          {st}
+                                        </option>
+                                      ))}
+                                    </select>
+                                    {errors.state && (
+                                      <FieldError className="text-xs text-rose-400">
+                                        {errors.state}
+                                      </FieldError>
+                                    )}
+                                  </Field>
+
+                                  <Field>
+                                    <FieldLabel
+                                      htmlFor="city"
+                                      className="text-xs font-semibold text-neutral-200"
+                                    >
+                                      City / Area
+                                    </FieldLabel>
+                                    <Input
+                                      id="city"
+                                      name="city"
+                                      placeholder="e.g. Indiranagar"
+                                      value={form.city || ""}
+                                      onChange={(e) =>
+                                        handleFieldChange("city", e.target.value)
+                                      }
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
+                                    />
+                                  </Field>
+                                </div>
+
+                                <FieldDescription className="text-xs text-neutral-400">
+                                  Orders from buyers located within your pincode radius are automatically matched to your shop counter for instant local delivery.
+                                </FieldDescription>
+                              </FieldSet>
+                            </FieldGroup>
+                          </CardContent>
+                        </Card>
+
+                        {/* Step 1 Action: Next button */}
+                        <div className="rounded-2xl border border-neutral-800 bg-neutral-900/90 p-5 sm:p-6 shadow-xl backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4">
+                          <div className="flex items-center gap-2 text-xs text-neutral-400 text-center sm:text-left">
+                            <Lock className="size-4 text-rose-500 shrink-0" />
+                            <span>
+                              Step 1 of 2: Continue to enter owner contact & verification details.
+                            </span>
+                          </div>
+
+                          <Button
+                            type="button"
+                            onClick={handleNextStep}
+                            className="w-full sm:w-auto min-w-[200px] rounded-xl bg-[#e11d48] py-3.5 px-6 text-sm font-semibold text-white shadow-lg shadow-rose-600/30 transition-all hover:bg-[#c9183d] hover:shadow-rose-600/40 active:scale-[0.99] cursor-pointer inline-flex items-center justify-center gap-2"
+                          >
+                            <span>Next: Owner Details</span>
+                            <ArrowRight className="size-4" data-icon="inline-end" />
+                          </Button>
+                        </div>
+                      </motion.div>
+                    ) : (
+                      /* STEP 2: OWNER DETAILS ENTRY */
+                      <motion.div
+                        key="step2-owner"
+                        initial={{ opacity: 0, x: 15 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -15 }}
                         transition={{ duration: 0.25 }}
                         className="flex flex-col gap-6"
                       >
@@ -441,7 +751,7 @@ export function RegisterPage() {
                                     variant="outline"
                                     className="border-neutral-700 bg-neutral-950/70 text-neutral-300 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5"
                                   >
-                                    Step 1 of 2
+                                    Step 2 of 2
                                   </Badge>
                                 </div>
                                 <CardDescription className="text-xs text-neutral-400 mt-0.5">
@@ -581,12 +891,23 @@ export function RegisterPage() {
                                 </div>
 
                                 <Field data-invalid={!!errors.ownerAddress}>
-                                  <FieldLabel
-                                    htmlFor="ownerAddress"
-                                    className="text-xs font-semibold text-neutral-200"
-                                  >
-                                    Address *
-                                  </FieldLabel>
+                                  <div className="flex items-center justify-between">
+                                    <FieldLabel
+                                      htmlFor="ownerAddress"
+                                      className="text-xs font-semibold text-neutral-200"
+                                    >
+                                      Address *
+                                    </FieldLabel>
+                                    {form.address && (
+                                      <button
+                                        type="button"
+                                        onClick={handleCopyShopAddressToOwner}
+                                        className="text-[11px] font-semibold text-rose-400 hover:text-rose-300 hover:underline cursor-pointer"
+                                      >
+                                        Same as shop address
+                                      </button>
+                                    )}
+                                  </div>
                                   <Input
                                     id="ownerAddress"
                                     name="ownerAddress"
@@ -610,323 +931,6 @@ export function RegisterPage() {
                           </CardContent>
                         </Card>
 
-                        {/* Step 1 Action: Next button */}
-                        <div className="rounded-2xl border border-neutral-800 bg-neutral-900/90 p-5 sm:p-6 shadow-xl backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4">
-                          <div className="flex items-center gap-2 text-xs text-neutral-400 text-center sm:text-left">
-                            <Lock className="size-4 text-rose-500 shrink-0" />
-                            <span>
-                              Step 1 of 2: Continue to enter your hardware shop & GST details.
-                            </span>
-                          </div>
-
-                          <Button
-                            type="button"
-                            onClick={handleNextStep}
-                            className="w-full sm:w-auto min-w-[200px] rounded-xl bg-[#e11d48] py-3.5 px-6 text-sm font-semibold text-white shadow-lg shadow-rose-600/30 transition-all hover:bg-[#c9183d] hover:shadow-rose-600/40 active:scale-[0.99] cursor-pointer inline-flex items-center justify-center gap-2"
-                          >
-                            <span>Next: Business Details</span>
-                            <ArrowRight className="size-4" data-icon="inline-end" />
-                          </Button>
-                        </div>
-                      </motion.div>
-                    ) : (
-                      /* STEP 2: BUSINESS DETAILS ENTRY */
-                      <motion.div
-                        key="step2-business"
-                        initial={{ opacity: 0, x: 15 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -15 }}
-                        transition={{ duration: 0.25 }}
-                        className="flex flex-col gap-6"
-                      >
-                        <Card className="rounded-2xl border border-neutral-800 bg-neutral-900/80 p-0 shadow-2xl backdrop-blur-md ring-0 overflow-hidden">
-                          <CardHeader className="border-b border-neutral-800/90 p-5 sm:p-6 bg-neutral-900/95 flex flex-row items-center justify-between">
-                            <div className="flex items-center gap-3">
-                              <span className="flex size-9 items-center justify-center rounded-xl bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
-                                <Building2 className="size-5" />
-                              </span>
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <CardTitle className="text-lg sm:text-xl font-bold text-white">
-                                    Business Details
-                                  </CardTitle>
-                                  <Badge
-                                    variant="outline"
-                                    className="border-neutral-700 bg-neutral-950/70 text-neutral-300 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5"
-                                  >
-                                    Step 2 of 2
-                                  </Badge>
-                                </div>
-                                <CardDescription className="text-xs text-neutral-400 mt-0.5">
-                                  Hardware shop name, GSTIN, and local delivery fulfillment address
-                                </CardDescription>
-                              </div>
-                            </div>
-
-                            {isBusinessComplete && (
-                              <Badge className="bg-emerald-950/80 text-emerald-400 border border-emerald-500/30 text-xs hidden sm:inline-flex items-center gap-1">
-                                <CheckCircle2 className="size-3" />
-                                <span>Complete</span>
-                              </Badge>
-                            )}
-                          </CardHeader>
-
-                          <CardContent className="p-5 sm:p-7">
-                            <FieldGroup className="gap-5">
-                              <FieldSet className="gap-4">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                  <Field data-invalid={!!errors.shopName}>
-                                    <FieldLabel
-                                      htmlFor="shopName"
-                                      className="text-xs font-semibold text-neutral-200"
-                                    >
-                                      Shop name *
-                                    </FieldLabel>
-                                    <Input
-                                      id="shopName"
-                                      name="shopName"
-                                      required
-                                      placeholder="e.g. Apex Hardware & Tech Hub"
-                                      value={form.shopName}
-                                      onChange={(e) =>
-                                        handleFieldChange("shopName", e.target.value)
-                                      }
-                                      aria-invalid={!!errors.shopName}
-                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
-                                    />
-                                    {errors.shopName && (
-                                      <FieldError className="text-xs text-rose-400">
-                                        {errors.shopName}
-                                      </FieldError>
-                                    )}
-                                  </Field>
-
-                                  <Field data-invalid={!!errors.gstNumber}>
-                                    <FieldLabel
-                                      htmlFor="gstNumber"
-                                      className="text-xs font-semibold text-neutral-200"
-                                    >
-                                      Gst number *
-                                    </FieldLabel>
-                                    <Input
-                                      id="gstNumber"
-                                      name="gstNumber"
-                                      required
-                                      placeholder="e.g. 29AAAAA0000A1Z5"
-                                      value={form.gstNumber}
-                                      onChange={(e) =>
-                                        handleFieldChange(
-                                          "gstNumber",
-                                          e.target.value.toUpperCase()
-                                        )
-                                      }
-                                      aria-invalid={!!errors.gstNumber}
-                                      className="h-10 text-sm font-mono uppercase bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
-                                    />
-                                    {errors.gstNumber && (
-                                      <FieldError className="text-xs text-rose-400">
-                                        {errors.gstNumber}
-                                      </FieldError>
-                                    )}
-                                  </Field>
-                                </div>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                  <Field data-invalid={!!errors.mobNumber}>
-                                    <FieldLabel
-                                      htmlFor="mobNumber"
-                                      className="text-xs font-semibold text-neutral-200"
-                                    >
-                                      Mob number *
-                                    </FieldLabel>
-                                    <Input
-                                      id="mobNumber"
-                                      name="mobNumber"
-                                      required
-                                      type="tel"
-                                      placeholder="e.g. +91 98765 43210"
-                                      value={form.mobNumber}
-                                      onChange={(e) =>
-                                        handleFieldChange("mobNumber", e.target.value)
-                                      }
-                                      aria-invalid={!!errors.mobNumber}
-                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
-                                    />
-                                    {errors.mobNumber && (
-                                      <FieldError className="text-xs text-rose-400">
-                                        {errors.mobNumber}
-                                      </FieldError>
-                                    )}
-                                  </Field>
-
-                                  <Field data-invalid={!!errors.email}>
-                                    <FieldLabel
-                                      htmlFor="email"
-                                      className="text-xs font-semibold text-neutral-200"
-                                    >
-                                      Email *
-                                    </FieldLabel>
-                                    <Input
-                                      id="email"
-                                      name="email"
-                                      required
-                                      type="email"
-                                      placeholder="e.g. shop@example.com"
-                                      value={form.email}
-                                      onChange={(e) =>
-                                        handleFieldChange("email", e.target.value)
-                                      }
-                                      aria-invalid={!!errors.email}
-                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
-                                    />
-                                    {errors.email && (
-                                      <FieldError className="text-xs text-rose-400">
-                                        {errors.email}
-                                      </FieldError>
-                                    )}
-                                  </Field>
-                                </div>
-
-                                <Field data-invalid={!!errors.address}>
-                                  <div className="flex items-center justify-between">
-                                    <FieldLabel
-                                      htmlFor="address"
-                                      className="text-xs font-semibold text-neutral-200"
-                                    >
-                                      Address *
-                                    </FieldLabel>
-                                    {form.ownerAddress && (
-                                      <button
-                                        type="button"
-                                        onClick={handleCopyOwnerAddressToShop}
-                                        className="text-[11px] font-semibold text-rose-400 hover:text-rose-300 hover:underline cursor-pointer"
-                                      >
-                                        Same as owner address
-                                      </button>
-                                    )}
-                                  </div>
-                                  <Input
-                                    id="address"
-                                    name="address"
-                                    required
-                                    placeholder="e.g. Shop #12, Commercial Complex, MG Road, Bengaluru"
-                                    value={form.address}
-                                    onChange={(e) =>
-                                      handleFieldChange("address", e.target.value)
-                                    }
-                                    aria-invalid={!!errors.address}
-                                    className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
-                                  />
-                                  {errors.address && (
-                                    <FieldError className="text-xs text-rose-400">
-                                      {errors.address}
-                                    </FieldError>
-                                  )}
-                                </Field>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                  <Field data-invalid={!!errors.pincode}>
-                                    <FieldLabel
-                                      htmlFor="pincode"
-                                      className="text-xs font-semibold text-neutral-200"
-                                    >
-                                      Pincode *
-                                    </FieldLabel>
-                                    <Input
-                                      id="pincode"
-                                      name="pincode"
-                                      required
-                                      type="text"
-                                      inputMode="numeric"
-                                      maxLength={6}
-                                      placeholder="e.g. 560038"
-                                      value={form.pincode}
-                                      onChange={(e) =>
-                                        handleFieldChange(
-                                          "pincode",
-                                          e.target.value.replace(/\D/g, "").slice(0, 6)
-                                        )
-                                      }
-                                      aria-invalid={!!errors.pincode}
-                                      className="h-10 text-sm font-mono tracking-wider bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
-                                    />
-                                    {errors.pincode && (
-                                      <FieldError className="text-xs text-rose-400">
-                                        {errors.pincode}
-                                      </FieldError>
-                                    )}
-                                  </Field>
-
-                                  <Field data-invalid={!!errors.state}>
-                                    <FieldLabel
-                                      htmlFor="state"
-                                      className="text-xs font-semibold text-neutral-200"
-                                    >
-                                      State *
-                                    </FieldLabel>
-                                    <select
-                                      id="state"
-                                      name="state"
-                                      required
-                                      value={form.state}
-                                      onChange={(e) =>
-                                        handleFieldChange("state", e.target.value)
-                                      }
-                                      aria-invalid={!!errors.state}
-                                      className="h-10 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-white focus-visible:outline-none focus-visible:border-[#e11d48] focus-visible:ring-2 focus-visible:ring-[#e11d48]/25"
-                                    >
-                                      <option
-                                        value=""
-                                        disabled
-                                        className="bg-neutral-950 text-neutral-500"
-                                      >
-                                        Select State *
-                                      </option>
-                                      {SOUTH_INDIAN_STATES.map((st) => (
-                                        <option
-                                          key={st}
-                                          value={st}
-                                          className="bg-neutral-950 text-white"
-                                        >
-                                          {st}
-                                        </option>
-                                      ))}
-                                    </select>
-                                    {errors.state && (
-                                      <FieldError className="text-xs text-rose-400">
-                                        {errors.state}
-                                      </FieldError>
-                                    )}
-                                  </Field>
-
-                                  <Field>
-                                    <FieldLabel
-                                      htmlFor="city"
-                                      className="text-xs font-semibold text-neutral-200"
-                                    >
-                                      City / Area
-                                    </FieldLabel>
-                                    <Input
-                                      id="city"
-                                      name="city"
-                                      placeholder="e.g. Indiranagar"
-                                      value={form.city || ""}
-                                      onChange={(e) =>
-                                        handleFieldChange("city", e.target.value)
-                                      }
-                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
-                                    />
-                                  </Field>
-                                </div>
-
-                                <FieldDescription className="text-xs text-neutral-400">
-                                  Orders from buyers located within your pincode radius are automatically matched to your shop counter for instant local delivery.
-                                </FieldDescription>
-                              </FieldSet>
-                            </FieldGroup>
-                          </CardContent>
-                        </Card>
-
                         {/* Step 2 Actions: Back and Submit buttons */}
                         <div className="rounded-2xl border border-neutral-800 bg-neutral-900/90 p-5 sm:p-6 shadow-xl backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4">
                           <Button
@@ -936,7 +940,7 @@ export function RegisterPage() {
                             className="w-full sm:w-auto border-neutral-700 bg-neutral-950 text-neutral-300 hover:bg-neutral-900 hover:text-white inline-flex items-center gap-1.5"
                           >
                             <ChevronLeft className="size-4" data-icon="inline-start" />
-                            <span>Back: Owner Details</span>
+                            <span>Back: Business Details</span>
                           </Button>
 
                           <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">

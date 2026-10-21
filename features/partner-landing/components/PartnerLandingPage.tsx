@@ -36,12 +36,6 @@ export function PartnerLandingPage() {
         <section id="benefits" className="w-full bg-white dark:bg-black scroll-mt-16">
           <BenefitsSection />
         </section>
-
-        {/* Section 2: Built Around Your Business (Value Props) */}
-        <section id="features" className="w-full bg-neutral-50 dark:bg-neutral-900 scroll-mt-16">
-          <ValuePropsSection onOpenRegister={handleOpenRegister} />
-        </section>
-
         {/* Section 3: Onboarding Steps */}
         <section id="how-it-works" className="w-full bg-white dark:bg-black scroll-mt-16">
           <StepsSection />
