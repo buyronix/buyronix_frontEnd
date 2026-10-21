@@ -226,15 +226,18 @@ export function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#120e24] text-neutral-100 flex flex-col selection:bg-violet-500/20 selection:text-violet-300">
+    <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col selection:bg-rose-500/20 selection:text-rose-300">
       {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-40 w-full border-b border-violet-950/60 bg-[#16112c]/85 backdrop-blur-md">
+      <header className="sticky top-0 z-40 w-full border-b border-neutral-800/80 bg-neutral-950/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
           <Link
             href="/"
             className="group flex items-center text-2xl sm:text-3xl font-extrabold italic tracking-tight text-white transition-opacity hover:opacity-90"
           >
-            <span>buy</span><span className="text-[#8c70d3]">ronix</span><span className="text-[#8c70d3]">.</span>
+            <span>buyronix</span>
+            <span className="not-italic text-[#e11d48] transition-transform group-hover:scale-125 ml-0.5">
+              .
+            </span>
           </Link>
 
           <Link
@@ -252,12 +255,12 @@ export function RegisterPage() {
         <div className="mx-auto max-w-7xl">
           {!submitted ? (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              {/* Left Column: Register Your Hardware Shop - Hidden on mobile, visible on lg+ */}
-              <div className="hidden lg:flex lg:col-span-5 lg:sticky lg:top-28 flex-col justify-center gap-6 order-1">
+              {/* Left Column: Register Your Hardware Shop - Vertically centered / Sticky at Left Side */}
+              <div className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col justify-center gap-6 order-1">
                 <div>
                   <Badge
                     variant="outline"
-                    className="border-violet-500/30 bg-violet-500/10 text-violet-300 font-semibold gap-1.5 py-1 px-3 mb-3.5 uppercase tracking-wider text-xs"
+                    className="border-rose-500/30 bg-rose-500/10 text-rose-400 font-semibold gap-1.5 py-1 px-3 mb-3.5 uppercase tracking-wider text-xs"
                   >
                     <Store className="size-3.5" data-icon="inline-start" />
                     <span>Partner with Buyronix</span>
@@ -265,7 +268,7 @@ export function RegisterPage() {
 
                   <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
                     Register Your <br className="hidden sm:inline" />
-                    <span className="text-[#8c70d3]">Hardware Shop</span>
+                    <span className="text-[#e11d48]">Hardware Shop</span>
                   </h1>
 
                   <p className="mt-4 text-base sm:text-lg text-neutral-300 leading-relaxed">
@@ -277,7 +280,7 @@ export function RegisterPage() {
                 {/* Value Cards in High-Contrast Dark Theme */}
                 <div className="flex flex-col gap-3.5 pt-1">
                   <div className="flex items-start gap-3.5 rounded-xl border border-neutral-800/90 bg-neutral-900/70 p-4 shadow-sm hover:border-neutral-700 transition-colors">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-violet-950/80 text-violet-300 border border-violet-500/20">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
                       <Clock className="size-5" />
                     </span>
                     <div>
@@ -289,7 +292,7 @@ export function RegisterPage() {
                   </div>
 
                   <div className="flex items-start gap-3.5 rounded-xl border border-neutral-800/90 bg-neutral-900/70 p-4 shadow-sm hover:border-neutral-700 transition-colors">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-violet-950/80 text-violet-300 border border-violet-500/20">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
                       <ShieldCheck className="size-5" />
                     </span>
                     <div>
@@ -301,7 +304,7 @@ export function RegisterPage() {
                   </div>
 
                   <div className="flex items-start gap-3.5 rounded-xl border border-neutral-800/90 bg-neutral-900/70 p-4 shadow-sm hover:border-neutral-700 transition-colors">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-violet-950/80 text-violet-300 border border-violet-500/20">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
                       <CreditCard className="size-5" />
                     </span>
                     <div>
@@ -319,12 +322,12 @@ export function RegisterPage() {
               </div>
 
               {/* Right Column: Two-Step Entry (Owner details first -> Business details next) */}
-              <div className="w-full max-w-xl mx-auto lg:max-w-none lg:col-span-7 flex flex-col gap-6 order-2">
+              <div className="lg:col-span-7 flex flex-col gap-6 order-2">
                 {/* Form Progress Bar at the Top */}
-                <div className="rounded-2xl border border-violet-900/30 bg-[#16112c]/80 p-5 shadow-xl backdrop-blur-md">
+                <div className="rounded-2xl border border-neutral-800 bg-neutral-900/80 p-5 shadow-xl backdrop-blur-md">
                   <div className="flex items-center justify-between text-xs font-semibold mb-2.5">
                     <div className="flex items-center gap-2">
-                      <span className="flex size-6 items-center justify-center rounded-full bg-[#623ac3] text-white text-xs font-bold shadow-xs">
+                      <span className="flex size-6 items-center justify-center rounded-full bg-[#e11d48] text-white text-xs font-bold shadow-xs">
                         {currentStep}
                       </span>
                       <span className="text-white text-sm font-semibold">
@@ -344,7 +347,7 @@ export function RegisterPage() {
                   {/* Progress Bar Track */}
                   <div className="h-2 w-full bg-neutral-950 rounded-full overflow-hidden border border-neutral-800">
                     <div
-                      className="h-full bg-gradient-to-r from-violet-600 to-[#623ac3] rounded-full transition-all duration-300 ease-out"
+                      className="h-full bg-gradient-to-r from-rose-600 to-[#e11d48] rounded-full transition-all duration-300 ease-out"
                       style={{ width: currentStep === 1 ? "50%" : "100%" }}
                     />
                   </div>
@@ -361,7 +364,7 @@ export function RegisterPage() {
                       ) : (
                         <span
                           className={`size-2 rounded-full shrink-0 ${
-                            currentStep === 1 ? "bg-violet-500" : "bg-neutral-600"
+                            currentStep === 1 ? "bg-rose-500" : "bg-neutral-600"
                           }`}
                         />
                       )}
@@ -392,7 +395,7 @@ export function RegisterPage() {
                       ) : (
                         <span
                           className={`size-2 rounded-full shrink-0 ${
-                            currentStep === 2 ? "bg-violet-500" : "bg-neutral-600"
+                            currentStep === 2 ? "bg-rose-500" : "bg-neutral-600"
                           }`}
                         />
                       )}
@@ -426,7 +429,7 @@ export function RegisterPage() {
                         <Card className="rounded-2xl border border-neutral-800 bg-neutral-900/80 p-0 shadow-2xl backdrop-blur-md ring-0 overflow-hidden">
                           <CardHeader className="border-b border-neutral-800/90 p-5 sm:p-6 bg-neutral-900/95 flex flex-row items-center justify-between">
                             <div className="flex items-center gap-3">
-                              <span className="flex size-9 items-center justify-center rounded-xl bg-violet-950/80 text-violet-300 border border-violet-500/20">
+                              <span className="flex size-9 items-center justify-center rounded-xl bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
                                 <User className="size-5" />
                               </span>
                               <div>
@@ -476,7 +479,7 @@ export function RegisterPage() {
                                         handleFieldChange("ownerName", e.target.value)
                                       }
                                       aria-invalid={!!errors.ownerName}
-                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
                                     />
                                     {errors.ownerName && (
                                       <FieldError className="text-xs text-rose-400">
@@ -503,7 +506,7 @@ export function RegisterPage() {
                                         handleFieldChange("mobNo", e.target.value)
                                       }
                                       aria-invalid={!!errors.mobNo}
-                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
                                     />
                                     {errors.mobNo && (
                                       <FieldError className="text-xs text-rose-400">
@@ -531,7 +534,7 @@ export function RegisterPage() {
                                         handleFieldChange("ownerState", e.target.value)
                                       }
                                       aria-invalid={!!errors.ownerState}
-                                      className="h-10 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-white focus-visible:outline-none focus-visible:border-[#623ac3] focus-visible:ring-2 focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-white focus-visible:outline-none focus-visible:border-[#e11d48] focus-visible:ring-2 focus-visible:ring-[#e11d48]/25"
                                     >
                                       <option
                                         value=""
@@ -572,7 +575,7 @@ export function RegisterPage() {
                                       onChange={(e) =>
                                         handleFieldChange("ownerCity", e.target.value)
                                       }
-                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
                                     />
                                   </Field>
                                 </div>
@@ -594,7 +597,7 @@ export function RegisterPage() {
                                       handleFieldChange("ownerAddress", e.target.value)
                                     }
                                     aria-invalid={!!errors.ownerAddress}
-                                    className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                    className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
                                   />
                                   {errors.ownerAddress && (
                                     <FieldError className="text-xs text-rose-400">
@@ -610,7 +613,7 @@ export function RegisterPage() {
                         {/* Step 1 Action: Next button */}
                         <div className="rounded-2xl border border-neutral-800 bg-neutral-900/90 p-5 sm:p-6 shadow-xl backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4">
                           <div className="flex items-center gap-2 text-xs text-neutral-400 text-center sm:text-left">
-                            <Lock className="size-4 text-violet-400 shrink-0" />
+                            <Lock className="size-4 text-rose-500 shrink-0" />
                             <span>
                               Step 1 of 2: Continue to enter your hardware shop & GST details.
                             </span>
@@ -619,7 +622,7 @@ export function RegisterPage() {
                           <Button
                             type="button"
                             onClick={handleNextStep}
-                            className="w-full sm:w-auto min-w-[200px] rounded-xl bg-[#623ac3] py-3.5 px-6 text-sm font-semibold text-white shadow-lg shadow-purple-900/40 transition-all hover:bg-[#522ea8] hover:shadow-purple-900/50 active:scale-[0.99] cursor-pointer inline-flex items-center justify-center gap-2"
+                            className="w-full sm:w-auto min-w-[200px] rounded-xl bg-[#e11d48] py-3.5 px-6 text-sm font-semibold text-white shadow-lg shadow-rose-600/30 transition-all hover:bg-[#c9183d] hover:shadow-rose-600/40 active:scale-[0.99] cursor-pointer inline-flex items-center justify-center gap-2"
                           >
                             <span>Next: Business Details</span>
                             <ArrowRight className="size-4" data-icon="inline-end" />
@@ -639,7 +642,7 @@ export function RegisterPage() {
                         <Card className="rounded-2xl border border-neutral-800 bg-neutral-900/80 p-0 shadow-2xl backdrop-blur-md ring-0 overflow-hidden">
                           <CardHeader className="border-b border-neutral-800/90 p-5 sm:p-6 bg-neutral-900/95 flex flex-row items-center justify-between">
                             <div className="flex items-center gap-3">
-                              <span className="flex size-9 items-center justify-center rounded-xl bg-violet-950/80 text-violet-300 border border-violet-500/20">
+                              <span className="flex size-9 items-center justify-center rounded-xl bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
                                 <Building2 className="size-5" />
                               </span>
                               <div>
@@ -689,7 +692,7 @@ export function RegisterPage() {
                                         handleFieldChange("shopName", e.target.value)
                                       }
                                       aria-invalid={!!errors.shopName}
-                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
                                     />
                                     {errors.shopName && (
                                       <FieldError className="text-xs text-rose-400">
@@ -718,7 +721,7 @@ export function RegisterPage() {
                                         )
                                       }
                                       aria-invalid={!!errors.gstNumber}
-                                      className="h-10 text-sm font-mono uppercase bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm font-mono uppercase bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
                                     />
                                     {errors.gstNumber && (
                                       <FieldError className="text-xs text-rose-400">
@@ -747,7 +750,7 @@ export function RegisterPage() {
                                         handleFieldChange("mobNumber", e.target.value)
                                       }
                                       aria-invalid={!!errors.mobNumber}
-                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
                                     />
                                     {errors.mobNumber && (
                                       <FieldError className="text-xs text-rose-400">
@@ -774,7 +777,7 @@ export function RegisterPage() {
                                         handleFieldChange("email", e.target.value)
                                       }
                                       aria-invalid={!!errors.email}
-                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
                                     />
                                     {errors.email && (
                                       <FieldError className="text-xs text-rose-400">
@@ -796,7 +799,7 @@ export function RegisterPage() {
                                       <button
                                         type="button"
                                         onClick={handleCopyOwnerAddressToShop}
-                                        className="text-[11px] font-semibold text-violet-400 hover:text-violet-300 hover:underline cursor-pointer"
+                                        className="text-[11px] font-semibold text-rose-400 hover:text-rose-300 hover:underline cursor-pointer"
                                       >
                                         Same as owner address
                                       </button>
@@ -812,7 +815,7 @@ export function RegisterPage() {
                                       handleFieldChange("address", e.target.value)
                                     }
                                     aria-invalid={!!errors.address}
-                                    className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                    className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
                                   />
                                   {errors.address && (
                                     <FieldError className="text-xs text-rose-400">
@@ -845,7 +848,7 @@ export function RegisterPage() {
                                         )
                                       }
                                       aria-invalid={!!errors.pincode}
-                                      className="h-10 text-sm font-mono tracking-wider bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm font-mono tracking-wider bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
                                     />
                                     {errors.pincode && (
                                       <FieldError className="text-xs text-rose-400">
@@ -870,7 +873,7 @@ export function RegisterPage() {
                                         handleFieldChange("state", e.target.value)
                                       }
                                       aria-invalid={!!errors.state}
-                                      className="h-10 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-white focus-visible:outline-none focus-visible:border-[#623ac3] focus-visible:ring-2 focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-white focus-visible:outline-none focus-visible:border-[#e11d48] focus-visible:ring-2 focus-visible:ring-[#e11d48]/25"
                                     >
                                       <option
                                         value=""
@@ -911,7 +914,7 @@ export function RegisterPage() {
                                       onChange={(e) =>
                                         handleFieldChange("city", e.target.value)
                                       }
-                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#623ac3] focus-visible:ring-[#623ac3]/25"
+                                      className="h-10 text-sm bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-950 focus-visible:border-[#e11d48] focus-visible:ring-[#e11d48]/25"
                                     />
                                   </Field>
                                 </div>
@@ -943,7 +946,7 @@ export function RegisterPage() {
                             <Button
                               type="submit"
                               disabled={isSubmitting}
-                              className="w-full sm:w-auto min-w-[200px] rounded-xl bg-[#623ac3] py-3.5 px-6 text-sm font-semibold text-white shadow-lg shadow-purple-900/40 transition-all hover:bg-[#522ea8] hover:shadow-purple-900/50 active:scale-[0.99] cursor-pointer inline-flex items-center justify-center gap-2"
+                              className="w-full sm:w-auto min-w-[200px] rounded-xl bg-[#e11d48] py-3.5 px-6 text-sm font-semibold text-white shadow-lg shadow-rose-600/30 transition-all hover:bg-[#c9183d] hover:shadow-rose-600/40 active:scale-[0.99] cursor-pointer inline-flex items-center justify-center gap-2"
                             >
                               {isSubmitting ? (
                                 <span>Submitting Details...</span>
@@ -970,11 +973,11 @@ export function RegisterPage() {
               transition={{ duration: 0.4 }}
               className="mx-auto max-w-xl rounded-2xl border border-neutral-800 bg-neutral-900/90 p-8 sm:p-12 text-center shadow-2xl backdrop-blur-md"
             >
-              <div className="mx-auto mb-5 flex size-16 items-center justify-center rounded-full bg-violet-950/70 text-violet-300 border border-violet-500/30">
+              <div className="mx-auto mb-5 flex size-16 items-center justify-center rounded-full bg-rose-950/70 text-[#e11d48] border border-rose-500/30">
                 <CheckCircle2 className="size-9" />
               </div>
 
-              <span className="text-xs font-bold tracking-wider text-[#8c70d3] uppercase">
+              <span className="text-xs font-bold tracking-wider text-[#e11d48] uppercase">
                 Application Received
               </span>
 
@@ -1006,7 +1009,7 @@ export function RegisterPage() {
                   Register Another Shop
                 </Button>
                 <Link href="/">
-                  <Button className="w-full sm:w-auto bg-[#623ac3] text-white hover:bg-[#522ea8]">
+                  <Button className="w-full sm:w-auto bg-[#e11d48] text-white hover:bg-[#c9183d]">
                     Return to Home
                   </Button>
                 </Link>

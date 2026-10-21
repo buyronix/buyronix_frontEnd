@@ -92,22 +92,22 @@ export function RegisterModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-lg bg-white border border-neutral-200 text-neutral-900 shadow-2xl shadow-black/25 max-h-[90vh] overflow-y-auto shadow-2xl">
+      <DialogContent className="sm:max-w-lg bg-neutral-950 border border-neutral-800 text-white max-h-[90vh] overflow-y-auto shadow-2xl">
         {!submitted ? (
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <DialogHeader className="text-left">
               <div className="flex items-center gap-2 mb-1.5">
-                <span className="flex size-7 items-center justify-center rounded-full bg-[#ede9fe] text-[#623ac3] border border-[#623ac3]/20">
+                <span className="flex size-7 items-center justify-center rounded-full bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
                   <Store className="size-4" />
                 </span>
-                <span className="text-xs font-bold tracking-wider text-[#623ac3] uppercase">
+                <span className="text-xs font-bold tracking-wider text-[#e11d48] uppercase">
                   Partner with Buyronix
                 </span>
               </div>
-              <DialogTitle className="text-xl font-bold tracking-tight text-neutral-900">
+              <DialogTitle className="text-xl font-bold tracking-tight text-white">
                 Register Your Hardware Shop
               </DialogTitle>
-              <DialogDescription className="text-sm text-neutral-600">
+              <DialogDescription className="text-sm text-neutral-400">
                 Join verified neighborhood hardware sellers and bring your inventory
                 closer to nearby buyers with instant local delivery.
               </DialogDescription>
@@ -116,16 +116,16 @@ export function RegisterModal({
             <FieldGroup className="gap-5 py-1">
               {/* Shop Details Section */}
               <FieldSet className="gap-3.5">
-                <div className="flex items-center gap-2 pb-1.5 border-b border-neutral-200">
-                  <Store className="size-4 text-[#623ac3]" />
-                  <FieldLegend className="text-xs font-bold uppercase tracking-wider text-neutral-900 m-0">
+                <div className="flex items-center gap-2 pb-1.5 border-b border-neutral-800">
+                  <Store className="size-4 text-[#e11d48]" />
+                  <FieldLegend className="text-xs font-bold uppercase tracking-wider text-white m-0">
                     Shop Details
                   </FieldLegend>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Field>
-                    <FieldLabel htmlFor="modal-shopName" className="text-xs font-semibold text-neutral-700">
+                    <FieldLabel htmlFor="modal-shopName" className="text-xs font-semibold text-neutral-200">
                       Shop name *
                     </FieldLabel>
                     <Input
@@ -137,12 +137,12 @@ export function RegisterModal({
                       onChange={(e) =>
                         setForm((prev) => ({ ...prev, shopName: e.target.value }))
                       }
-                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-white focus-visible:border-[#623ac3]"
+                      className="h-10 text-sm bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-900 focus-visible:border-[#e11d48]"
                     />
                   </Field>
 
                   <Field>
-                    <FieldLabel htmlFor="modal-gstNumber" className="text-xs font-semibold text-neutral-700">
+                    <FieldLabel htmlFor="modal-gstNumber" className="text-xs font-semibold text-neutral-200">
                       Gst number *
                     </FieldLabel>
                     <Input
@@ -157,14 +157,14 @@ export function RegisterModal({
                           gstNumber: e.target.value.toUpperCase(),
                         }))
                       }
-                      className="h-10 text-sm font-mono uppercase bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-white focus-visible:border-[#623ac3]"
+                      className="h-10 text-sm font-mono uppercase bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-900 focus-visible:border-[#e11d48]"
                     />
                   </Field>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Field>
-                    <FieldLabel htmlFor="modal-mobNumber" className="text-xs font-semibold text-neutral-700">
+                    <FieldLabel htmlFor="modal-mobNumber" className="text-xs font-semibold text-neutral-200">
                       Mob number *
                     </FieldLabel>
                     <Input
@@ -180,12 +180,12 @@ export function RegisterModal({
                           mobNumber: e.target.value,
                         }))
                       }
-                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-white focus-visible:border-[#623ac3]"
+                      className="h-10 text-sm bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-900 focus-visible:border-[#e11d48]"
                     />
                   </Field>
 
                   <Field>
-                    <FieldLabel htmlFor="modal-email" className="text-xs font-semibold text-neutral-700">
+                    <FieldLabel htmlFor="modal-email" className="text-xs font-semibold text-neutral-200">
                       Email *
                     </FieldLabel>
                     <Input
@@ -198,13 +198,13 @@ export function RegisterModal({
                       onChange={(e) =>
                         setForm((prev) => ({ ...prev, email: e.target.value }))
                       }
-                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-white focus-visible:border-[#623ac3]"
+                      className="h-10 text-sm bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-900 focus-visible:border-[#e11d48]"
                     />
                   </Field>
                 </div>
 
                 <Field>
-                  <FieldLabel htmlFor="modal-address" className="text-xs font-semibold text-neutral-700">
+                  <FieldLabel htmlFor="modal-address" className="text-xs font-semibold text-neutral-200">
                     Address *
                   </FieldLabel>
                   <Input
@@ -216,23 +216,23 @@ export function RegisterModal({
                     onChange={(e) =>
                       setForm((prev) => ({ ...prev, address: e.target.value }))
                     }
-                    className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-white focus-visible:border-[#623ac3]"
+                    className="h-10 text-sm bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-900 focus-visible:border-[#e11d48]"
                   />
                 </Field>
               </FieldSet>
 
               {/* Location & Pincode Section */}
               <FieldSet className="gap-3.5">
-                <div className="flex items-center gap-2 pb-1.5 border-b border-neutral-200">
-                  <MapPin className="size-4 text-[#623ac3]" />
-                  <FieldLegend className="text-xs font-bold uppercase tracking-wider text-neutral-900 m-0">
+                <div className="flex items-center gap-2 pb-1.5 border-b border-neutral-800">
+                  <MapPin className="size-4 text-[#e11d48]" />
+                  <FieldLegend className="text-xs font-bold uppercase tracking-wider text-white m-0">
                     Location & Pincode
                   </FieldLegend>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Field>
-                    <FieldLabel htmlFor="modal-pincode" className="text-xs font-semibold text-neutral-700">
+                    <FieldLabel htmlFor="modal-pincode" className="text-xs font-semibold text-neutral-200">
                       Pincode *
                     </FieldLabel>
                     <Input
@@ -250,12 +250,12 @@ export function RegisterModal({
                           pincode: e.target.value.replace(/\D/g, "").slice(0, 6),
                         }))
                       }
-                      className="h-10 text-sm font-mono tracking-wider bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-white focus-visible:border-[#623ac3]"
+                      className="h-10 text-sm font-mono tracking-wider bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-900 focus-visible:border-[#e11d48]"
                     />
                   </Field>
 
                   <Field>
-                    <FieldLabel htmlFor="modal-city" className="text-xs font-semibold text-neutral-700">
+                    <FieldLabel htmlFor="modal-city" className="text-xs font-semibold text-neutral-200">
                       City / Area
                     </FieldLabel>
                     <Input
@@ -269,13 +269,13 @@ export function RegisterModal({
                           city: e.target.value,
                         }))
                       }
-                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-white focus-visible:border-[#623ac3]"
+                      className="h-10 text-sm bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-900 focus-visible:border-[#e11d48]"
                     />
                   </Field>
                 </div>
 
                 <Field>
-                  <FieldLabel htmlFor="modal-state" className="text-xs font-semibold text-neutral-700">
+                  <FieldLabel htmlFor="modal-state" className="text-xs font-semibold text-neutral-200">
                     State *
                   </FieldLabel>
                   <select
@@ -286,7 +286,7 @@ export function RegisterModal({
                     onChange={(e) =>
                       setForm((prev) => ({ ...prev, state: e.target.value }))
                     }
-                    className="h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-xs shadow-black/5 focus-visible:outline-none focus-visible:border-[#623ac3]"
+                    className="h-10 w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-white focus-visible:outline-none focus-visible:border-[#e11d48]"
                   >
                     <option value="" disabled className="bg-neutral-950 text-neutral-500">
                       Select State *
@@ -302,10 +302,10 @@ export function RegisterModal({
 
               {/* Owner Details Section */}
               <FieldSet className="gap-3.5">
-                <div className="flex items-center justify-between pb-1.5 border-b border-neutral-200">
+                <div className="flex items-center justify-between pb-1.5 border-b border-neutral-800">
                   <div className="flex items-center gap-2">
-                    <User className="size-4 text-[#623ac3]" />
-                    <FieldLegend className="text-xs font-bold uppercase tracking-wider text-neutral-900 m-0">
+                    <User className="size-4 text-[#e11d48]" />
+                    <FieldLegend className="text-xs font-bold uppercase tracking-wider text-white m-0">
                       Owner Details
                     </FieldLegend>
                   </div>
@@ -316,7 +316,7 @@ export function RegisterModal({
                       onClick={() =>
                         setForm((prev) => ({ ...prev, ownerAddress: prev.address }))
                       }
-                      className="text-xs font-semibold text-violet-400 hover:text-violet-300 hover:underline cursor-pointer"
+                      className="text-xs font-semibold text-rose-400 hover:text-rose-300 hover:underline cursor-pointer"
                     >
                       Same as shop address
                     </button>
@@ -325,7 +325,7 @@ export function RegisterModal({
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Field>
-                    <FieldLabel htmlFor="modal-ownerName" className="text-xs font-semibold text-neutral-700">
+                    <FieldLabel htmlFor="modal-ownerName" className="text-xs font-semibold text-neutral-200">
                       Owner name *
                     </FieldLabel>
                     <Input
@@ -337,12 +337,12 @@ export function RegisterModal({
                       onChange={(e) =>
                         setForm((prev) => ({ ...prev, ownerName: e.target.value }))
                       }
-                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-white focus-visible:border-[#623ac3]"
+                      className="h-10 text-sm bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-900 focus-visible:border-[#e11d48]"
                     />
                   </Field>
 
                   <Field>
-                    <FieldLabel htmlFor="modal-mobNo" className="text-xs font-semibold text-neutral-700">
+                    <FieldLabel htmlFor="modal-mobNo" className="text-xs font-semibold text-neutral-200">
                       Mob no *
                     </FieldLabel>
                     <Input
@@ -355,14 +355,14 @@ export function RegisterModal({
                       onChange={(e) =>
                         setForm((prev) => ({ ...prev, mobNo: e.target.value }))
                       }
-                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-white focus-visible:border-[#623ac3]"
+                      className="h-10 text-sm bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-900 focus-visible:border-[#e11d48]"
                     />
                   </Field>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Field>
-                    <FieldLabel htmlFor="modal-ownerState" className="text-xs font-semibold text-neutral-700">
+                    <FieldLabel htmlFor="modal-ownerState" className="text-xs font-semibold text-neutral-200">
                       State (Owner) *
                     </FieldLabel>
                     <select
@@ -373,7 +373,7 @@ export function RegisterModal({
                       onChange={(e) =>
                         setForm((prev) => ({ ...prev, ownerState: e.target.value }))
                       }
-                      className="h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-xs shadow-black/5 focus-visible:outline-none focus-visible:border-[#623ac3]"
+                      className="h-10 w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-white focus-visible:outline-none focus-visible:border-[#e11d48]"
                     >
                       <option value="" disabled className="bg-neutral-950 text-neutral-500">
                         Select State *
@@ -387,7 +387,7 @@ export function RegisterModal({
                   </Field>
 
                   <Field>
-                    <FieldLabel htmlFor="modal-ownerCity" className="text-xs font-semibold text-neutral-700">
+                    <FieldLabel htmlFor="modal-ownerCity" className="text-xs font-semibold text-neutral-200">
                       City (Owner)
                     </FieldLabel>
                     <Input
@@ -398,13 +398,13 @@ export function RegisterModal({
                       onChange={(e) =>
                         setForm((prev) => ({ ...prev, ownerCity: e.target.value }))
                       }
-                      className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-white focus-visible:border-[#623ac3]"
+                      className="h-10 text-sm bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-900 focus-visible:border-[#e11d48]"
                     />
                   </Field>
                 </div>
 
                 <Field>
-                  <FieldLabel htmlFor="modal-ownerAddress" className="text-xs font-semibold text-neutral-700">
+                  <FieldLabel htmlFor="modal-ownerAddress" className="text-xs font-semibold text-neutral-200">
                     Address *
                   </FieldLabel>
                   <Input
@@ -416,13 +416,13 @@ export function RegisterModal({
                     onChange={(e) =>
                       setForm((prev) => ({ ...prev, ownerAddress: e.target.value }))
                     }
-                    className="h-10 text-sm bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 shadow-xs shadow-black/5 focus-visible:bg-white focus-visible:border-[#623ac3]"
+                    className="h-10 text-sm bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:bg-neutral-900 focus-visible:border-[#e11d48]"
                   />
                 </Field>
               </FieldSet>
             </FieldGroup>
 
-            <DialogFooter className="mt-2 flex-col sm:flex-row gap-2 border-t border-neutral-200 pt-3">
+            <DialogFooter className="mt-2 flex-col sm:flex-row gap-2 border-t border-neutral-800 pt-3">
               <Button
                 type="button"
                 variant="ghost"
@@ -434,7 +434,7 @@ export function RegisterModal({
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full sm:w-auto bg-[#623ac3] text-[#ffffff] hover:bg-[#522ea8] shadow-md shadow-black/15"
+                className="w-full sm:w-auto bg-[#e11d48] text-white hover:bg-[#c9183d]"
               >
                 {isSubmitting ? "Submitting..." : "Submit Registration"}
                 <ArrowRight data-icon="inline-end" />
@@ -443,10 +443,10 @@ export function RegisterModal({
           </form>
         ) : (
           <div className="flex flex-col items-center justify-center py-6 text-center">
-            <div className="mb-4 flex size-14 items-center justify-center rounded-full bg-[#ede9fe] text-[#623ac3] border border-[#623ac3]/20">
+            <div className="mb-4 flex size-14 items-center justify-center rounded-full bg-rose-950/80 text-[#e11d48] border border-rose-500/20">
               <CheckCircle2 className="size-8" />
             </div>
-            <span className="text-xs font-bold tracking-wider text-[#623ac3] uppercase">
+            <span className="text-xs font-bold tracking-wider text-[#e11d48] uppercase">
               Application Received
             </span>
             <DialogTitle className="mt-1 text-2xl font-bold tracking-tight text-white">
@@ -456,12 +456,12 @@ export function RegisterModal({
               Thank you for registering <strong className="text-white font-semibold">{form.shopName || "your shop"}</strong>.
               Our local merchant team will contact you within 24 hours to finalize verification.
             </p>
-            <div className="mt-4 rounded-xl border border-neutral-200 bg-neutral-900 p-3 text-xs text-neutral-400">
+            <div className="mt-4 rounded-xl border border-neutral-800 bg-neutral-900 p-3 text-xs text-neutral-400">
               Reference Token: <span className="font-mono font-bold text-white text-sm ml-1">{referenceToken}</span>
             </div>
             <Button
               onClick={handleReset}
-              className="mt-6 w-full bg-[#623ac3] text-[#ffffff] hover:bg-[#522ea8] shadow-md shadow-black/15"
+              className="mt-6 w-full bg-[#e11d48] text-white hover:bg-[#c9183d]"
             >
               Done
             </Button>
