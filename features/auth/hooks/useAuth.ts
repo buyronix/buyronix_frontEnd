@@ -79,7 +79,9 @@ export function useAuth() {
 
       setAuthError(null);
       const origin =
-        typeof window !== "undefined" ? window.location.origin : "";
+        typeof window !== "undefined" && window.location.origin
+          ? window.location.origin
+          : (process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "");
       const defaultRedirect = `${origin}/auth/callback?next=/register`;
       const redirectTo = customRedirectTo || defaultRedirect;
 

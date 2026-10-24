@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import {
-  FileSpreadsheet,
+  FileText,
   Download,
   AlertCircle,
   Loader2,
@@ -55,10 +55,12 @@ export function AdminDashboard() {
     isExportModalOpen,
     setIsExportModalOpen,
     isCsvDownloading,
+    isPdfDownloading,
     handleApprove,
     handleOpenRejectDialog,
     handleConfirmReject,
     handleDownloadCsv,
+    handleDownloadPdf,
     isVerifying,
   } = useAdminSellers(accessToken);
 
@@ -99,7 +101,8 @@ export function AdminDashboard() {
           onSearchChange={setSearchInput}
           onRefresh={refetch}
           isFetching={isFetching}
-          onOpenGoogleSheetsExport={() => setIsExportModalOpen(true)}
+          onDownloadPdf={handleDownloadPdf}
+          isPdfDownloading={isPdfDownloading}
           onDownloadCsv={handleDownloadCsv}
           isCsvDownloading={isCsvDownloading}
           pendingCount={counts.pending}
@@ -113,7 +116,8 @@ export function AdminDashboard() {
           onSignOut={signOut}
           searchValue={searchInput}
           onSearchChange={setSearchInput}
-          onOpenGoogleSheetsExport={() => setIsExportModalOpen(true)}
+          onDownloadPdf={handleDownloadPdf}
+          isPdfDownloading={isPdfDownloading}
           onDownloadCsv={handleDownloadCsv}
           isCsvDownloading={isCsvDownloading}
         />
@@ -144,11 +148,21 @@ export function AdminDashboard() {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setIsExportModalOpen(true)}
-                className="text-xs font-semibold gap-1.5 h-8 bg-background border-border/80"
+                onClick={handleDownloadPdf}
+                disabled={isPdfDownloading}
+                className="text-xs font-semibold gap-1.5 h-8 bg-background border-border/80 text-foreground hover:bg-muted"
               >
-                <FileSpreadsheet className="size-3.5 text-emerald-600" />
-                <span>Google Sheets</span>
+                {isPdfDownloading ? (
+                  <>
+                    <Loader2 className="size-3.5 animate-spin text-rose-500" />
+                    <span>Generating PDF...</span>
+                  </>
+                ) : (
+                  <>
+                    <FileText className="size-3.5 text-rose-500" />
+                    <span>Download PDF Report</span>
+                  </>
+                )}
               </Button>
 
               <Button

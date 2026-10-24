@@ -7,6 +7,7 @@ import {
   fetchAdminSellers,
   verifySeller,
   downloadSellersCsv,
+  downloadBusinessesPdf,
 } from "../api/adminApi";
 import type {
   SellerRecord,
@@ -39,6 +40,7 @@ export function useAdminSellers(accessToken?: string | null) {
   const [rejectingSeller, setRejectingSeller] = React.useState<SellerRecord | null>(null);
   const [isExportModalOpen, setIsExportModalOpen] = React.useState<boolean>(false);
   const [isCsvDownloading, setIsCsvDownloading] = React.useState<boolean>(false);
+  const [isPdfDownloading, setIsPdfDownloading] = React.useState<boolean>(false);
 
   // Query key
   const queryKey = React.useMemo(
@@ -222,6 +224,24 @@ export function useAdminSellers(accessToken?: string | null) {
     }
   }, [activeTab, accessToken]);
 
+  const handleDownloadPdf = React.useCallback(async () => {
+    try {
+      setIsPdfDownloading(true);
+      await downloadBusinessesPdf(
+        activeTab === "ALL" ? undefined : activeTab,
+        accessToken
+      );
+      toast.success("PDF report downloaded successfully.");
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error ? err.message : "Failed to download PDF report.";
+      toast.error(message);
+      console.error(err);
+    } finally {
+      setIsPdfDownloading(false);
+    }
+  }, [activeTab, accessToken]);
+
   const handleTabChange = React.useCallback((tab: "ALL" | VerificationStatus) => {
     setActiveTab(tab);
     setPage(1);
@@ -260,10 +280,12 @@ export function useAdminSellers(accessToken?: string | null) {
     isExportModalOpen,
     setIsExportModalOpen,
     isCsvDownloading,
+    isPdfDownloading,
     handleApprove,
     handleOpenRejectDialog,
     handleConfirmReject,
     handleDownloadCsv,
+    handleDownloadPdf,
     isVerifying: verifyMutation.isPending,
   };
 }

@@ -1,3 +1,4 @@
+import { createClient } from "@/lib/supabase/client";
 import type {
   SellerRecord,
   SellersListResponse,
@@ -218,6 +219,53 @@ export async function downloadSellersCsv(
 
   const blob = await res.blob();
   triggerBlobDownload(blob, "buyronix-sellers.csv");
+}
+
+/**
+ * F. Direct PDF Report Download
+ * GET /api/v1/businesses/admin/export/pdf?status={APPROVED|PENDING|REJECTED}
+ */
+export async function downloadBusinessesPdf(
+  status?: string,
+  accessToken?: string | null
+): Promise<void> {
+  let token = accessToken;
+  if (!token && typeof window !== "undefined") {
+    try {
+      const supabase = createClient();
+      const session = (await supabase.auth.getSession()).data.session;
+      token = session?.access_token;
+    } catch {
+      // ignore
+    }
+  }
+
+  if (!token) {
+    throw new Error("You must be logged in as an administrator to export data.");
+  }
+
+  const query = status && status !== "ALL" ? `?status=${encodeURIComponent(status)}` : "";
+  const endpoint = `${API_BASE}/api/v1/businesses/admin/export/pdf${query}`;
+
+  const response = await fetch(endpoint, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || "Failed to download PDF report.");
+  }
+
+  // Handle binary PDF blob and trigger browser download
+  const blob = await response.blob();
+  const dateStr = new Date().toISOString().split("T")[0];
+  const fileStatus = status && status !== "ALL" ? `${status.toLowerCase()}-` : "";
+  const filename = `buyronix-businesses-${fileStatus}${dateStr}.pdf`;
+
+  triggerBlobDownload(blob, filename);
 }
 
 function triggerBlobDownload(blob: Blob, filename: string) {
