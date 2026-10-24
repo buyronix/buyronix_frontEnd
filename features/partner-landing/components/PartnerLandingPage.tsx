@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { Navbar } from "./Navbar";
 import { HeroSection } from "./HeroSection";
 import { BenefitsSection } from "./BenefitsSection";
-import { ValuePropsSection } from "./ValuePropsSection";
 import { StepsSection } from "./StepsSection";
 import { FaqSection } from "./FaqSection";
 import { CtaSection } from "./CtaSection";

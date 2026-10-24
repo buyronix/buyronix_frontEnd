@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
-  allowedDevOrigins: ['192.168.110.35'],
+  allowedDevOrigins: ['10.90.165.35'],
   images: {
     qualities: [75, 95],
   },
