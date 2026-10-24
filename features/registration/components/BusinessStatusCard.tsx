@@ -10,8 +10,6 @@ import {
   ArrowRight,
   RefreshCw,
   LogOut,
-  Store,
-  User,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,7 +26,6 @@ interface BusinessStatusCardProps {
 
 export function BusinessStatusCard({
   status,
-  details,
   onRefresh,
   onSignOut,
   onResubmit,
@@ -37,20 +34,6 @@ export function BusinessStatusCard({
   const isPending = status.verification_status === "PENDING";
   const isApproved = status.verification_status === "APPROVED";
   const isRejected = status.verification_status === "REJECTED";
-
-  const shopName =
-    status.shop_name ||
-    details?.shop_name ||
-    (details as { business_name?: string })?.business_name ||
-    "Hardware Store";
-
-  const shopMobile =
-    details?.mob_number ||
-    (details as { mobile_number?: string })?.mobile_number;
-
-  const shopAddress =
-    details?.address ||
-    (details as { address_line?: string })?.address_line;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
@@ -129,93 +112,6 @@ export function BusinessStatusCard({
             </p>
           </div>
         )}
-
-        {/* Submitted Store Summary Card */}
-        <div className="mt-7 rounded-2xl border border-neutral-800 bg-neutral-950 p-5 sm:p-6 space-y-3.5 text-xs text-neutral-300">
-          <div className="flex items-center gap-1.5 text-neutral-400 font-semibold text-[11px] uppercase tracking-wider pb-1 border-b border-neutral-800/80">
-            <Store className="size-3.5 text-[#e11d48]" />
-            <span>Shop Details</span>
-          </div>
-
-          <div className="flex items-center justify-between border-b border-neutral-800/80 pb-3">
-            <span className="text-neutral-400 font-medium">Shop / Trade Name</span>
-            <span className="font-semibold text-white text-sm">{shopName}</span>
-          </div>
-
-          {details?.gst_number && (
-            <div className="flex items-center justify-between border-b border-neutral-800/80 pb-3">
-              <span className="text-neutral-400 font-medium">GSTIN</span>
-              <span className="font-mono text-white font-medium">
-                {details.gst_number}
-              </span>
-            </div>
-          )}
-
-          {shopMobile && (
-            <div className="flex items-center justify-between border-b border-neutral-800/80 pb-3">
-              <span className="text-neutral-400 font-medium">Shop Mobile</span>
-              <span className="font-mono text-neutral-200">{shopMobile}</span>
-            </div>
-          )}
-
-          {details?.email && (
-            <div className="flex items-center justify-between border-b border-neutral-800/80 pb-3">
-              <span className="text-neutral-400 font-medium">Shop Email</span>
-              <span className="text-neutral-200">{details.email}</span>
-            </div>
-          )}
-
-          {shopAddress && (
-            <div className="flex items-center justify-between border-b border-neutral-800/80 pb-3">
-              <span className="text-neutral-400 font-medium">Shop Address</span>
-              <span className="text-neutral-200 text-right max-w-[240px] truncate">
-                {shopAddress}
-                {details?.city ? `, ${details.city}` : ""}
-                {details?.pincode ? ` (${details.pincode})` : ""}
-              </span>
-            </div>
-          )}
-
-          {(details?.owner_name || details?.mob_no || details?.owner_address) && (
-            <>
-              <div className="flex items-center gap-1.5 text-neutral-400 font-semibold text-[11px] uppercase tracking-wider pt-2 pb-1 border-b border-neutral-800/80">
-                <User className="size-3.5 text-[#e11d48]" />
-                <span>Owner Details</span>
-              </div>
-
-              {details?.owner_name && (
-                <div className="flex items-center justify-between border-b border-neutral-800/80 pb-3">
-                  <span className="text-neutral-400 font-medium">Proprietor Name</span>
-                  <span className="text-neutral-200 font-medium">{details.owner_name}</span>
-                </div>
-              )}
-
-              {details?.mob_no && (
-                <div className="flex items-center justify-between border-b border-neutral-800/80 pb-3">
-                  <span className="text-neutral-400 font-medium">Owner Mobile</span>
-                  <span className="font-mono text-neutral-200">{details.mob_no}</span>
-                </div>
-              )}
-
-              {details?.owner_address && (
-                <div className="flex items-center justify-between border-b border-neutral-800/80 pb-3">
-                  <span className="text-neutral-400 font-medium">Residential Address</span>
-                  <span className="text-neutral-200 text-right max-w-[240px] truncate">
-                    {details.owner_address}
-                    {details?.owner_city ? `, ${details.owner_city}` : ""}
-                  </span>
-                </div>
-              )}
-            </>
-          )}
-
-          <div className="flex items-center justify-between pt-1">
-            <span className="text-neutral-400 font-medium">Application ID</span>
-            <span className="font-mono text-neutral-400 text-[11px] truncate max-w-[200px]">
-              {status.id}
-            </span>
-          </div>
-        </div>
 
         {/* Action Buttons */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3.5">

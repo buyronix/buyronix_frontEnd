@@ -7,6 +7,7 @@ export {
   verifySeller,
   exportToGoogleSheets,
   downloadSellersCsv,
+  downloadBusinessesPdf,
 } from "./api/adminApi";
 export type {
   VerificationStatus,

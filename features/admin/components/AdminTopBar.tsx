@@ -6,7 +6,6 @@ import {
   X,
   Bell,
   Download,
-  FileSpreadsheet,
   FileText,
   RefreshCw,
   ChevronRight,
@@ -35,7 +34,8 @@ interface AdminTopBarProps {
   onSearchChange: (value: string) => void;
   onRefresh: () => void;
   isFetching?: boolean;
-  onOpenGoogleSheetsExport: () => void;
+  onDownloadPdf?: () => void;
+  isPdfDownloading?: boolean;
   onDownloadCsv: () => void;
   isCsvDownloading?: boolean;
   pendingCount?: number;
@@ -46,7 +46,8 @@ export function AdminTopBar({
   onSearchChange,
   onRefresh,
   isFetching,
-  onOpenGoogleSheetsExport,
+  onDownloadPdf,
+  isPdfDownloading = false,
   onDownloadCsv,
   isCsvDownloading,
   pendingCount = 0,
@@ -203,14 +204,17 @@ export function AdminTopBar({
               <DropdownMenuSeparator />
 
               <DropdownMenuItem
-                onClick={onOpenGoogleSheetsExport}
+                onClick={onDownloadPdf}
+                disabled={isPdfDownloading}
                 className="cursor-pointer gap-2 px-2 py-1.5 text-xs rounded-md"
               >
-                <FileSpreadsheet className="size-4 text-emerald-600 dark:text-emerald-400" />
+                <FileText className="size-4 text-rose-500" />
                 <div className="flex flex-col">
-                  <span className="font-medium text-foreground">Export to Google Sheets</span>
+                  <span className="font-medium text-foreground">
+                    {isPdfDownloading ? "Generating PDF..." : "Download PDF Report"}
+                  </span>
                   <span className="text-[10px] text-muted-foreground">
-                    Creates or updates online spreadsheet
+                    Formatted tabular print/download (.pdf)
                   </span>
                 </div>
               </DropdownMenuItem>
@@ -220,7 +224,7 @@ export function AdminTopBar({
                 disabled={isCsvDownloading}
                 className="cursor-pointer gap-2 px-2 py-1.5 text-xs rounded-md mt-1"
               >
-                <FileText className="size-4 text-primary" />
+                <Download className="size-4 text-primary" />
                 <div className="flex flex-col">
                   <span className="font-medium text-foreground">Download CSV</span>
                   <span className="text-[10px] text-muted-foreground">

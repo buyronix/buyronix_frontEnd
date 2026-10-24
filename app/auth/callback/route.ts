@@ -12,7 +12,11 @@ export async function GET(request: Request) {
   const isLocalEnv = process.env.NODE_ENV === "development";
   const forwardedHost = request.headers.get("x-forwarded-host");
   const forwardedProto = request.headers.get("x-forwarded-proto") || "https";
-  const baseUrl = !isLocalEnv && forwardedHost ? `${forwardedProto}://${forwardedHost}` : origin;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  const baseUrl =
+    !isLocalEnv && forwardedHost
+      ? `${forwardedProto}://${forwardedHost}`
+      : siteUrl || origin;
 
   // Validate next path to avoid open redirect vulnerabilities
   let next = searchParams.get("next") ?? "/register";

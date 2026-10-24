@@ -12,7 +12,6 @@ import {
   ExternalLink,
   Search,
   Download,
-  FileSpreadsheet,
   FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -44,7 +43,8 @@ interface AdminMobileHeaderProps {
   onSignOut: () => void;
   searchValue: string;
   onSearchChange: (value: string) => void;
-  onOpenGoogleSheetsExport: () => void;
+  onDownloadPdf?: () => void;
+  isPdfDownloading?: boolean;
   onDownloadCsv: () => void;
   isCsvDownloading?: boolean;
 }
@@ -56,7 +56,8 @@ export function AdminMobileHeader({
   onSignOut,
   searchValue,
   onSearchChange,
-  onOpenGoogleSheetsExport,
+  onDownloadPdf,
+  isPdfDownloading = false,
   onDownloadCsv,
   isCsvDownloading,
 }: AdminMobileHeaderProps) {
@@ -227,18 +228,19 @@ export function AdminMobileHeader({
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
-                  onClick={onOpenGoogleSheetsExport}
+                  onClick={onDownloadPdf}
+                  disabled={isPdfDownloading}
                   className="cursor-pointer gap-2 px-2 py-1.5 text-xs rounded-md"
                 >
-                  <FileSpreadsheet className="size-4 text-emerald-600" />
-                  <span>Google Sheets</span>
+                  <FileText className="size-4 text-rose-500" />
+                  <span>{isPdfDownloading ? "Generating PDF..." : "Export PDF Report"}</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={onDownloadCsv}
                   disabled={isCsvDownloading}
                   className="cursor-pointer gap-2 px-2 py-1.5 text-xs rounded-md"
                 >
-                  <FileText className="size-4 text-primary" />
+                  <Download className="size-4 text-primary" />
                   <span>Download CSV</span>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
